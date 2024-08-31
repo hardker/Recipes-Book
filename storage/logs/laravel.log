@@ -2289,3 +2289,27 @@
 [stacktrace]
 #0 {main}
 "} 
+[2024-08-25 02:03:34] local.ERROR: syntax error, unexpected token "===", expecting end of file {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): syntax error, unexpected token \"===\", expecting end of file at F:\\Site\\!Project\\Repository\\Recipes-Book\\app\\Models\\Category.php:13)
+[stacktrace]
+#0 {main}
+"} 
+[2024-08-25 02:04:34] local.ERROR: syntax error, unexpected token "===", expecting end of file {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): syntax error, unexpected token \"===\", expecting end of file at F:\\Site\\!Project\\Repository\\Recipes-Book\\app\\Models\\Category.php:13)
+[stacktrace]
+#0 {main}
+"} 
+[2024-08-25 02:05:34] local.ERROR: syntax error, unexpected token "===", expecting end of file {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): syntax error, unexpected token \"===\", expecting end of file at F:\\Site\\!Project\\Repository\\Recipes-Book\\app\\Models\\Category.php:13)
+[stacktrace]
+#0 {main}
+"} 
+[2024-08-25 02:06:34] local.ERROR: syntax error, unexpected token "===", expecting end of file {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): syntax error, unexpected token \"===\", expecting end of file at F:\\Site\\!Project\\Repository\\Recipes-Book\\app\\Models\\Category.php:13)
+[stacktrace]
+#0 {main}
+"} 
+[2024-08-25 02:07:34] local.ERROR: syntax error, unexpected token "===", expecting end of file {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): syntax error, unexpected token \"===\", expecting end of file at F:\\Site\\!Project\\Repository\\Recipes-Book\\app\\Models\\Category.php:13)
+[stacktrace]
+#0 {main}
+"} 
+[2024-08-25 02:08:36] local.ERROR: syntax error, unexpected token "===", expecting end of file {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): syntax error, unexpected token \"===\", expecting end of file at F:\\Site\\!Project\\Repository\\Recipes-Book\\app\\Models\\Category.php:13)
+[stacktrace]
+#0 {main}
+"} 
