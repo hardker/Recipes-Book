@@ -1,14 +1,20 @@
+<?php $__env->startSection('titles', 'Главная страница'); ?>
 
-<?php $__env->startSection('titles'); ?>
-    Главная страница
-<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('main_content'); ?>
-    <?php $__currentLoopData = $categorii; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <div>
-            <img src="<?php echo e(asset('' . $cat->images)); ?>" >
-            <?php echo e($cat->name_cat); ?>
+    
+    <h1> Категории</h1>
+    <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <a href=<?php echo e(route('cat', $cat->slug)); ?>>
+            <div>
+                <img src="<?php echo e(asset($cat->images)); ?>" alt="<?php echo e($cat->name_cat); ?>">
+                <?php echo e($cat->name_cat); ?>
 
-        </div>
+                
+
+                
+            </div>
+        </a>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 <?php $__env->stopSection(); ?>
 

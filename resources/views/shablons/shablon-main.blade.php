@@ -8,7 +8,17 @@
 </head>
 
 <body>
-    <h1> Категории</h1>
+    <div class="top-line">
+        <div class="container">
+            <a href='/' class="logo">
+                <img src="{{ asset('img/logo.png') }}" alt="" >
+            </a>
+            <div class="user-account">
+                <span class="user-account__text"> Личный кабинет </span>
+
+            </div>
+        </div>
+    </div>
     <main>
         @yield('main_content')
     </main>
