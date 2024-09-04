@@ -19,14 +19,18 @@ class MainController extends Controller
         return view('home', compact('categories', 'recipes'));
 
     }
-    public function getRecipesByCategory($slug)
-    {
-        // $categories = Category::orderBy('name_cat')->get();
-        // $current_category = Category::where('slug', $slug)->first();
-        // return view('home', [
-        //     'categories' =>  $categories,
-        //     'recipes' => $current_category -> recipes(),
+    public function search(Request $request) {
+        $query = $request->input('query');
 
-        // ]);
+
+        $results = Recipe::where('title','LIKE','%'.$query.'%')
+        ->orWhere('description','LIKE','%'.$query. '%')
+        ->orWhere('ingredients','LIKE','%'.$query.'%')
+        ->orWhere('timing','LIKE','%'.$query.'%')     
+        ->orWhere('calorie','LIKE','%'.$query.'%')               
+        ->get();
+      //  dd ($query);
+        
+        return view('search', ['results' => $results, 'query' => $query]);
     }
 }

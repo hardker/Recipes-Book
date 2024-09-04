@@ -146,7 +146,7 @@ Available commands:
  view
   view:cache              Compile all of the application's Blade templates
 Очистка кэша на случай  
-PS F:\Site\Recipes-Book> php artisan config:cache
+PS F:\Site\Recipes-Book> Ж
 Повторная миграция с очисткой после выполнить SEEВ для повторного заполнения
 PS F:\Site\Recipes-Book> php artisan migrate:refresh
 

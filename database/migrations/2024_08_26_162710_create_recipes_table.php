@@ -13,9 +13,13 @@ return new class extends Migration {
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('category_id')->unsigned();
-            $table->string('title');
-            $table->text('description');
-            $table->text('text');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->string('title')->unique();
+            $table->text('description');//Описание рецепта
+            $table->mediumText('text');//Приготовление рецепта
+            $table->text('ingredients');//Ингредиенты рецепта
+            $table->text('timing');//Время приготовление рецепта
+            $table->bigInteger('calorie');//Калорийность рецепта            
             $table->string('slug')->unique();
             $table->timestamps();
         });
