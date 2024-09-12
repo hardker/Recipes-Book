@@ -7,12 +7,25 @@
     <title><?php echo $__env->yieldContent('titles', 'Recipes-Book'); ?></title>
     
     <link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('css/bootstrap-icons.min.css')); ?>" rel="stylesheet">
+    
 
+    <style>
+        [class*="col"],
+        h2,
+        p {
+            border: 2px;
+        }
+
+        i:hover {
+            -webkit-text-stroke: 2px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <script src="<?php echo e(asset('css/bootstrap.min.js')); ?>" ></script>
+    <script src="<?php echo e(asset('css/bootstrap.min.js')); ?>"></script>
     <?php echo $__env->make('components.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 

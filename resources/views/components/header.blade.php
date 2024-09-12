@@ -26,19 +26,17 @@
 <div class="container">
     <header
         class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-
-
         <div class="col-md-3 mb-2 mb-md-0">
             <a href="{{ route('home') }}" class="d-inline-flex link-body-emphasis text-decoration-none">
                 <img src="{{ asset('img/logo.png') }}" alt="Логотип">
             </a>
         </div>
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-            <li><a href="#" class="nav-link px-2">Features</a></li>
+            <li><a href="{{ route('home') }}" class="nav-link px-2 link-secondary">Home</a></li>
+            {{-- <li><a href="#" class="nav-link px-2">Features</a></li>
             <li><a href="#" class="nav-link px-2">Pricing</a></li>
-            <li><a href="#" class="nav-link px-2">FAQs</a></li>
-            <li><a href="#" class="nav-link px-2">About</a></li>
+            <li><a href="#" class="nav-link px-2">FAQs</a></li> --}}
+            <li><a href="{{ route('about') }}" class="nav-link px-2">About</a></li>
         </ul>
         <form action="{{ route('search') }}" method="GET"
             class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 icon-link icon-link-hover" role="search">
@@ -46,12 +44,7 @@
             <input type="search" class="form-control" name="query" placeholder="Поиск рецептов..."
                 aria-label="Search" required>
             <button class="btn btn-primary d-inline-flex align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-search" viewBox="0 0 16 16">
-                    <path
-                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                </svg>
-                {{-- <img src="/img/search.svg" class="search-icon-svg" alt="ПОИСК"> --}}
+                <i width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"> </i>
             </button>
         </form>
 
@@ -61,48 +54,21 @@
             @if (Route::has('login'))
                 @auth
                     <div class="user-account">
-                        <span class="user-account__text"> Добро пожаловать </span>
-                    </div>
-                    <div class="user-account">
-                        <a href="#">{{ auth()->user()->name }}</a>
-                    </div>
+                        <span class="user-account__text"> Добро пожаловать {{ auth()->user()->name }}</span>
 
-                    <div class="favorites">
-                        <a href="{{ route('fav') }}">
-                            МОЯ КНИГА РЕЦЕПТОВ
-                        </a>
+                        {{-- <a href="#"></a> --}}
                     </div>
-                    <a href="{{ route('logout') }}">
-                        <button type="button" class="btn btn-outline-primary me-2">Выход</button>
-                    </a>
+                    <a href="{{ route('fav') }}" class="btn btn-outline-primary me-2"> МОЯ КНИГА РЕЦЕПТОВ </a>
+                    <a href="{{ route('logout') }}" class="btn btn-outline-primary">Выход</a>
                 @else
-                    <a href="{{ route('login') }}">
-                        <button type="button" class="btn btn-outline-primary me-2">Вход</button>
-                    </a>
-                    <a href="{{ route('register') }}">
-                        <button type="button" class="btn btn-outline-primary">Регистрация</button>
-                    </a>
-
+                    <a href="{{ route('login') }}" class="btn btn-outline-primary me-2">Вход </a>
+                    <a href="{{ route('register') }}" class="btn btn-outline-primary">Регистрация </a>
                 @endauth
             @endif
-
-
-
-
         </div>
     </header>
 </div>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-
-
-
-
-
-
-    </div>
-</nav>
 
 {{-- <div class="header-buttons">
 

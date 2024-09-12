@@ -1,2 +1,2 @@
 @extends('shablons.shablon-main')
-@section('titles', 'О нас')
+@section('titles', 'О сайте')

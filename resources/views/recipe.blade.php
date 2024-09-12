@@ -27,15 +27,28 @@
         {{-- В избранное --}}
         @auth
             <div class=" whitespace-nowrap flex justify-between w-max gap-5">
-                @if ($status)
-                    <a href="{{ route('InFavorite', ['id' => $recipe->id, 'status' => '0']) }}"
-                        class="p-2 hover:bg-zinc-300 rounded w-100 bg-gray-200 dark:text-black">Убрать из избранного
+                @if (!$stat or $stat->status == false)
+                    <a href="{{ route('InFavorite', ['id' => $recipe->id, 'status' => '1']) }}" class="btn btn-outline-danger">
+                        <i width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"></i>
+                        Добавить в избранное
                     </a>
                 @else
-                    <a href="{{ route('InFavorite', ['id' => $recipe->id, 'status' => '1']) }}"
-                        class="p-2 hover:bg-zinc-300 rounded w-100 bg-gray-200 dark:text-black">Добавить в избранное
+                    <a href="{{ route('InFavorite', ['id' => $recipe->id, 'status' => '0']) }}" class="btn btn-outline-danger">
+                        <i width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16"> </i>
+                        Убрать из избранного
+                    </a>
                 @endif
             </div>
         @endauth
+
+        <div class="rating">
+              {{-- {{ $rat}} --}}
+
+              Рейтинг: {{ number_format($rat, 1) }}</p>
+
+            {!! str_repeat('<span><i class="bi bi-star-fill"></i></span>', floor($rat)) !!}
+            {!! str_repeat('<span><i class="bi bi-star"></i></span>', 5 - floor($rat)) !!}
+        </div>
+      
     </div>
 @endsection

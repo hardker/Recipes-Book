@@ -6,13 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('titles', 'Recipes-Book')</title>
     {{-- @vite('resources/css/app.css') --}}
-    <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-icons.min.css') }}" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> --}}
 
+    <style>
+        [class*="col"],
+        h2,
+        p {
+            border: 2px;
+        }
+
+        i:hover {
+            -webkit-text-stroke: 2px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <script src="{{ asset('css/bootstrap.min.js')}}" ></script>
+    <script src="{{ asset('css/bootstrap.min.js') }}"></script>
     @include('components.header')
 
 

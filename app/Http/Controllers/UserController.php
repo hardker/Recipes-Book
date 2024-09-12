@@ -41,7 +41,7 @@ class UserController extends Controller
         ]);
         if (Auth::attempt($validated)) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard')->with('success','Добро пожаловать '.Auth::user()->name.'!');
+            return redirect()->intended('fav')->with('success','Добро пожаловать '.Auth::user()->name.'!');
         }
         return back()->withError (['email'=>'Неправильный логин или пароль', ]);
      //   dump($request->boolean('remember'));

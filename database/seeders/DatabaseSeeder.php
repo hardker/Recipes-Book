@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Category;
 use App\Models\Recipe;
 use App\Models\User;
+use App\Models\Like;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,6 +25,23 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        //Добавляем двух пользователей
+        User::create([
+            'name' => 'Admin',
+            'email' => 'admin@example.com',
+            'password' => Hash::make('admin'),
+            'is_admin' => true,
+        ]);
+        User::create([
+            'name' => 'User',
+            'email' => 'user@example.com',
+            'password' => Hash::make('user'),
+            'is_admin' => false,
+        ]);
+
+
+
         //Заполняем категории
         $arr_cat = array('Первые блюда', 'Вторые блюда', 'Десерт', );
         //        $arr_img = array('img/pervoe.jpeg', 'img/vtoroe.jpeg', 'img/desert.jpeg', );
@@ -42,22 +61,12 @@ class DatabaseSeeder extends Seeder
         $arr_cat = array('Первые блюда', 'Вторые блюда', 'Десерт', );
         //        $arr_img = array('img/pervoe.jpeg', 'img/vtoroe.jpeg', 'img/desert.jpeg', );
         $arr_slug = array('pervoe', 'vtoroe', 'desert', );
-
-        // for ($i = 0; $i < 10; $i++) {
-        //     DB::table('recipes')->insert([
-        //         'category_id' => rand(1, 3),
-        //         'title' => 'Рецепт '.$i,
-        //         'slug' => 'recipe-'.$i,
-        //         'description' => 'Description of post '.$i,
-        //         'text' => '<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. <br>'.$i.'</p>',
-
-        //     ]);
-        // }
-
         $xml = simplexml_load_file('recipes.xml');
+                $i = 0;
         foreach ($xml->recipe as $recipe) {
+    
             //   DB::table('recipes')->insert([
-           Recipe::create([
+            Recipe::create([
                 'category_id' => (integer) $recipe->category_id,
                 'title' => (string) $recipe->title,
                 'description' => (string) $recipe->description,
@@ -67,21 +76,25 @@ class DatabaseSeeder extends Seeder
                 'calorie' => (integer) $recipe->calorie,
                 'slug' => (string) $this->translit_slug($recipe->title),
             ]);
+
+          //  Заполняем рейтинг случайными значениями
+            Like::create([
+                'user_id' => 1,
+                'recipe_id' => ++$i,
+                'rating' => rand(1, 5),
+            ]);
+            Like::create([
+                'user_id' => 2,
+                'recipe_id' => $i,
+                'rating' => rand(1, 5),
+            ]);
+
+
         }
 
-        //Добавляем двух пользователей
-       User::create([
-            'name' => 'Admin',
-            'email' => 'admin@example.com',
-            'password' => Hash::make('admin'),
-            'is_admin' => true,
-        ]);
-       User::create([
-            'name' => 'User',
-            'email' => 'user@example.com',
-            'password' => Hash::make('user'),
-            'is_admin' => false,
-        ]);
+
+
+
     }
     public function translit_slug($value): string
     {

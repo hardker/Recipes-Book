@@ -4,14 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 
 class Category extends Model
 {
-//     use HasFactory;
+     use HasFactory;
 //     protected $table = 'recipes';
-//     public function recipes()
-//     {
-//         return $this->hasMany(recipe::class);
-//     }
+
+    public function recipes() :HasMany
+    {
+        return $this->hasMany(Recipe::class);
+    }
+
+    public function likes(): HasManyThrough
+    {
+        return $this->hasManyThrough(Like::class, Recipe::class);
+    }
  }
