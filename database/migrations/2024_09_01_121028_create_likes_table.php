@@ -18,7 +18,7 @@ return new class extends Migration
             $table->BigInteger('recipe_id')->unsigned();
             $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade');
             $table->boolean('status')->default(false);
-            $table->integer('rating')->default(0);          
+            // $table->integer('rating')->default(0);          
             $table->timestamps();
         });
     }

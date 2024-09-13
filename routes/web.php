@@ -24,6 +24,9 @@ Route::get('fav', [CategoriesController::class, 'favorite'])->name('fav');
 Route::get('recipe/{slug}', [RecipesController::class, 'index'])->name('recipe');
 Route::get('/recipe/{id}/fav/{status}', [RecipesController::class, 'in_favorite' ])->name('InFavorite');
 
+Route::post('comment-new',[RecipesController::class, 'new_comment'])->name('CommentCreate');
+
+
 Route::get('about', function () { return view('about'); })->name('about');;
 Route::get('search', [MainController::class, 'search'])->name('search');
 

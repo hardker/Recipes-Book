@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Recipe;
 use App\Models\Like;
 use Illuminate\Http\Request;
@@ -14,10 +15,10 @@ class RecipesController extends Controller
 
     public function index($slug)
     {
-        $data['recipe'] = Recipe::where('slug', $slug)->first();
+        $data['recipe'] = Recipe::with('comments')->where('slug', $slug)->first();
         $data['category'] = $data['recipe']->category->name_cat;
         $data['stat'] = Like::where('user_id', Auth::id())->where('recipe_id', $data['recipe']->id)->first();
-        $data['rat'] = $data['recipe']->averageRating();
+        // $data['rat'] = $data['recipe']->averageRating();
         //   $data['rat'] = Like::where('recipe_id', $data['recipe']->id)->avg('rating');
         //   $data['rat_user'] = Like::where('user_id', Auth::id())->where('recipe_id', $data['recipe']->id)->first();
         dump($data);
@@ -44,5 +45,22 @@ class RecipesController extends Controller
         }
         return redirect()->back();
 
+    }
+    public function new_comment(Comment $comment, Request $request)
+    {
+        $request->validate(['rating' => 'required|integer|between:1,5']);
+        Comment::updateOrCreate([
+            'recipe_id' => $request->recipe_id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'comment' => $request->comment,
+            'rating' => $request->rating,
+        ]);
+        // $comment->save();
+        // return redirect()->back()->with('flash_msg_success', 'Ваш отзыв успешно отправлен');
+
+
+
+        return back()->with('flash_msg_success', 'Ваш отзыв успешно отправлен!');
     }
 }

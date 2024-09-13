@@ -17,7 +17,7 @@ class CategoriesController extends Controller
         $category = Category::where("slug", $slug)->first('id','name_cat');
        // dump($category->toArray());
         $data['title'] = $category->name_cat;
-        $data['recipes'] = Recipe::select()->where('category_id', $category->id)->withAvg('likes', 'rating')->paginate(5);
+        $data['recipes'] = Recipe::select()->where('category_id', $category->id)->withAvg('comments', 'rating')->paginate(5);
         dump($data);
 
         return view('/category', $data);

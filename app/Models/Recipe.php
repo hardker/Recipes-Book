@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class recipe extends Model
+class Recipe extends Model
 {
   use HasFactory;
   //  protected $table = 'recipes';
@@ -16,12 +16,12 @@ class recipe extends Model
   {
     return $this->belongsTo(Category::class);
   }
-  public function likes() :HasMany
+  public function comments() :HasMany
   {
-      return $this->hasMany(Like::class);
+      return $this->hasMany(Comment::class);
   }
   public function averageRating()
   {
-      return $this->likes()->avg('rating');
+      return $this->comments()->avg('rating');
   }
 }

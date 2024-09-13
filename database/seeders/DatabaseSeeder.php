@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Category;
 use App\Models\Recipe;
 use App\Models\User;
-use App\Models\Like;
+use App\Models\Comment;
 
 
 class DatabaseSeeder extends Seeder
@@ -62,9 +62,9 @@ class DatabaseSeeder extends Seeder
         //        $arr_img = array('img/pervoe.jpeg', 'img/vtoroe.jpeg', 'img/desert.jpeg', );
         $arr_slug = array('pervoe', 'vtoroe', 'desert', );
         $xml = simplexml_load_file('recipes.xml');
-                $i = 0;
+        $i = 0;
         foreach ($xml->recipe as $recipe) {
-    
+
             //   DB::table('recipes')->insert([
             Recipe::create([
                 'category_id' => (integer) $recipe->category_id,
@@ -77,16 +77,21 @@ class DatabaseSeeder extends Seeder
                 'slug' => (string) $this->translit_slug($recipe->title),
             ]);
 
-          //  Заполняем рейтинг случайными значениями
-            Like::create([
-                'user_id' => 1,
+            //  Заполняем рейтинг случайными значениями
+            Comment::create([
+
                 'recipe_id' => ++$i,
+                'name' => 'gost',
+                'email' => 'gost@mail.com',
                 'rating' => rand(1, 5),
+                'comment' => 'комментарий гостя ' . $i,
             ]);
-            Like::create([
-                'user_id' => 2,
+            Comment::create([
                 'recipe_id' => $i,
+                'name' => 'user',
+                'email' => 'user@mail.com',
                 'rating' => rand(1, 5),
+                'comment' => 'комментарий юзера ' . $i,
             ]);
 
 

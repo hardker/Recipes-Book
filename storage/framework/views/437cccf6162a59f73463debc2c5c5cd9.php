@@ -9,7 +9,7 @@
     <link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/bootstrap-icons.min.css')); ?>" rel="stylesheet">
     
-
+<!--Обводим значки при наведении -->
     <style>
         [class*="col"],
         h2,
@@ -20,6 +20,8 @@
         i:hover {
             -webkit-text-stroke: 2px;
         }
+
+      
     </style>
 </head>
 
