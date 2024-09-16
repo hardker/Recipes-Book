@@ -13,24 +13,21 @@ class MainController extends Controller
     public function index()
     {
         $categories = Category::all();
-        //     dd($cat);   
-        $recipes = Recipe::all();
-        //             dd($recip;
-        return view('home', compact('categories', 'recipes'));
+        dump($categories);
+        return view('home', compact('categories'));
 
     }
-    public function search(Request $request) {
+    public function search(Request $request)
+    {
         $query = $request->input('query');
+        $results = Recipe::where('title', 'LIKE', '%' . $query . '%')
+            ->orWhere('description', 'LIKE', '%' . $query . '%')
+            ->orWhere('ingredients', 'LIKE', '%' . $query . '%')
+            ->orWhere('timing', 'LIKE', '%' . $query . '%')
+            ->orWhere('calorie', 'LIKE', '%' . $query . '%')
+            ->paginate(5);
+          dump ($results);
 
-
-        $results = Recipe::where('title','LIKE','%'.$query.'%')
-        ->orWhere('description','LIKE','%'.$query. '%')
-        ->orWhere('ingredients','LIKE','%'.$query.'%')
-        ->orWhere('timing','LIKE','%'.$query.'%')     
-        ->orWhere('calorie','LIKE','%'.$query.'%')               
-        ->get();
-      //  dd ($query);
-        
         return view('search', ['results' => $results, 'query' => $query]);
     }
 }

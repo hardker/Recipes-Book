@@ -1,5 +1,5 @@
 @extends('shablons.shablon-main')
-@section('titles', 'Авторизация')
+@section('titles', 'Dashboard')
 
 
 @section('main_content')

@@ -26,7 +26,7 @@
 <div class="container">
     <header
         class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-        <div class="col-md-3 mb-2 mb-md-0">
+        <div class="col-md-auto mb-2 mb-md-0">
             <a href="{{ route('home') }}" class="d-inline-flex link-body-emphasis text-decoration-none">
                 <img src="{{ asset('img/logo.png') }}" alt="Логотип">
             </a>
@@ -47,8 +47,9 @@
                 <i width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"> </i>
             </button>
         </form>
+        <a href="{{ route('fav') }}" class="btn btn-outline-primary me-2"> МОЯ КНИГА РЕЦЕПТОВ </a>
 
-        <div class="col-md-3 text-end">
+        <div class="col-md-auto text-end">
 
 
             @if (Route::has('login'))
@@ -58,7 +59,7 @@
 
                         {{-- <a href="#"></a> --}}
                     </div>
-                    <a href="{{ route('fav') }}" class="btn btn-outline-primary me-2"> МОЯ КНИГА РЕЦЕПТОВ </a>
+                    <a href="{{ route('recipe.new') }}" class="btn btn-outline-primary me-2"> ДОБАВИТЬ РЕЦЕПТ </a>
                     <a href="{{ route('logout') }}" class="btn btn-outline-primary">Выход</a>
                 @else
                     <a href="{{ route('login') }}" class="btn btn-outline-primary me-2">Вход </a>

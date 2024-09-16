@@ -15,12 +15,13 @@ return new class extends Migration {
             $table->bigInteger('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('title')->unique();
-            $table->text('description');//Описание рецепта
+            $table->text('description')->nullable();//Описание рецепта
             $table->mediumText('text');//Приготовление рецепта
             $table->text('ingredients');//Ингредиенты рецепта
-            $table->text('timing');//Время приготовление рецепта
-            $table->bigInteger('calorie');//Калорийность рецепта            
+            $table->text('timing')->nullable();//Время приготовление рецепта
+            $table->bigInteger('calorie')->nullable();//Калорийность рецепта            
             $table->string('slug')->unique();
+            $table->string('path')->nullable();//Путь до фото с именем файла 
             $table->timestamps();
         });
     }

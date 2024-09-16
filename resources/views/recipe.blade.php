@@ -1,9 +1,7 @@
 @extends('shablons.shablon-main')
 @section('titles', 'Рецепты')
 
-@section('main_content')
-    {{-- @include('includes.categories') --}}
-
+@section('styles')
     <style>
         .rate {
             float: left;
@@ -57,16 +55,28 @@
         .rating-container input:focus {
             color: #000;
         }
-
-        /* End */
     </style>
+@endsection
+
+@section('breadcrumb')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('cat', $category->slug) }}">Категории</a></li>
+
+            <li class="breadcrumb-item active" aria-current="page">Рецепты</li>
+        </ol>
+    </nav>
+@endsection
+
+@section('main_content')
     <h1 class="text-center"> {{ $recipe->title }}</h1>
     <div class="container">
         <div class="container text-left">
             <div class="row justify-content-start">
                 <div class="col-4">
-                    <img src="{{ asset('img/' . $recipe->slug . '.jpeg') }}" alt="{{ $recipe->slug }}" widht="300"
-                        height="300">
+                    <img src="{{ asset($recipe->path) }}" alt="{{ $recipe->slug }}" widht="300" height="300"
+                        id='image' onError="this.src='../img/img_not_found.gif'; this.onerror=null">
                 </div>
                 <div class="col-6"; font-weight:bold>
                     <br>
@@ -153,7 +163,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-10 mt-4 ">
-                <form class="py-2 px-4" style="box-shadow: 0 0 10px 0 #ddd;" action="{{ route('CommentCreate') }}"
+                <form class="py-2 px-4" style="box-shadow: 0 0 10px 0 #ddd;" action="{{ route('comment.add') }}"
                     method="POST" autocomplete="off">
                     @csrf
                     <input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
@@ -162,7 +172,7 @@
                             @if (Session::has('flash_msg_success'))
                                 <div class="alert alert-success alert-dismissible p-2">
                                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                    <strong>ПОЗДРАВЛЯЮ!</strong> {!! session('flash_msg_success') !!}.
+                                    <strong>ПОЗДРАВЛЯЮ!</strong> {!! session('flash_msg_success') !!}
                                 </div>
                             @endif
                         </div>
@@ -172,8 +182,18 @@
                     <p class="font-weight-bold ">Оставьте отзыв о рецепте:</p>
                     <div class="form-group row">
                         <div class=" col-sm-6">
-                            <input class="form-control" type="text" name="name" placeholder="Ваше имя" maxlength="40"
-                                required />
+                            @auth
+                                <input class="form-control" type="text" name="name" value="{{ Auth::user()->name }}"
+                                    maxlength="40" required readonly />
+                            @endauth
+                            @guest
+                                <input class="form-control" type="text" name="name" placeholder="Ваше имя" maxlength="40"
+                                    required />
+                                @error('name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            @endguest
+
                         </div>
                         <div class="col-sm-6">
                             ОЦЕНИТЕ РЕЦЕПТ:
@@ -182,8 +202,18 @@
                     <div class="form-group row">
 
                         <div class="col-sm-6">
-                            <input class="form-control" type="email" name="email" placeholder="Ваш Email" maxlength="80"
-                                required />
+
+                            @auth
+                                <input class="form-control" type="email" name="email" value="{{ Auth::user()->email }}"
+                                    maxlength="40" required readonly />
+                            @endauth
+                            @guest
+                                <input class="form-control" type="email" name="email" placeholder="Ваш Email" maxlength="80"
+                                    required />
+                                @error('email')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            @endguest
                         </div>
                         <div class="col-sm-6">
                             <div class="rate">
@@ -191,7 +221,8 @@
                                 <label for="star5" title="5 звезд">5 stars</label>
                                 <input type="radio" id="star4" class="rate" name="rating" value="4" />
                                 <label for="star4" title="4 звезды">4 stars</label>
-                                <input type="radio" checked id="star3" class="rate" name="rating" value="3" />
+                                <input type="radio" checked id="star3" class="rate" name="rating"
+                                    value="3" />
                                 <label for="star3" title="3 звезды">3 stars</label>
                                 <input type="radio" id="star2" class="rate" name="rating" value="2">
                                 <label for="star2" title="2 звезды">2 stars</label>
@@ -215,4 +246,9 @@
             </div>
         </div>
     </div>
+
+
+
+
+
 @endsection

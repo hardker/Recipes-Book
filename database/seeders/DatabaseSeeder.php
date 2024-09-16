@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
         $xml = simplexml_load_file('recipes.xml');
         $i = 0;
         foreach ($xml->recipe as $recipe) {
-
+            $slug = $this->translit_slug($recipe->title);
             //   DB::table('recipes')->insert([
             Recipe::create([
                 'category_id' => (integer) $recipe->category_id,
@@ -74,7 +74,8 @@ class DatabaseSeeder extends Seeder
                 'ingredients' => (string) $recipe->ingredients,
                 'timing' => (string) $recipe->timing,
                 'calorie' => (integer) $recipe->calorie,
-                'slug' => (string) $this->translit_slug($recipe->title),
+                'slug' => (string) $slug,
+                'path' => (string) 'img/' . $slug . '.jpeg',
             ]);
 
             //  Заполняем рейтинг случайными значениями

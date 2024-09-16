@@ -10,8 +10,8 @@
             <div>
 
                 <h1> {{ $result->title }}</h1>
-                
-                <img src="{{ asset('img/' . $result->slug . '.jpeg') }}" alt="{{ $result->title }}">
+
+                <img src="{{ asset($result->path) }}" alt="{{ $result->title }}" onError="this.src='../img/img_not_found.gif'; this.onerror=null">
                 {{ $result->title }}
 
                 Описание рецепта
@@ -26,4 +26,6 @@
             </div>
         </a>
     @endforeach
+
+    <p> {{ $results->links('components.pagination') }}</p>
 @endsection

@@ -1,6 +1,12 @@
 @extends('shablons.shablon-main')
 @section('titles', 'Главная страница')
-
+@section('breadcrumb')
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Главная</li>
+    </ol>
+  </nav>
+@endsection
 
 @section('main_content')
     <div class="container">
@@ -11,7 +17,7 @@
         @foreach ($categories as $cat)
             <a href={{ route('cat', $cat->slug) }}>
                 <div>
-                    <img src="{{ asset($cat->images) }}" alt="{{ $cat->name_cat }}" widht="250" height="250">
+                    <img src="{{ asset($cat->images) }}" alt="{{ $cat->name_cat }}" widht="250" height="250" onError="this.src='/img/img_not_found.gif'; this.onerror=null">
                     <i><b>{{ $cat->name_cat }}</b></i>
                 </div>
             </a>

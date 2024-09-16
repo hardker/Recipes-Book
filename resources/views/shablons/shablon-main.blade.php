@@ -9,27 +9,35 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-icons.min.css') }}" rel="stylesheet">
     {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> --}}
-<!--Обводим значки при наведении -->
+  
     <style>
-        [class*="col"],
+        body {
+            background-color: #fdf5e6;
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+            overflow: scroll;
+        }
+  /* <!--Обводим значки при наведении --> */
+        [class*="btn"],
         h2,
         p {
-            border: 2px;
-        }
 
-        i:hover {
-            -webkit-text-stroke: 2px;
+            /* border: 2px; */
+            i:hover {
+                -webkit-text-stroke: 2px;
+            }
         }
-
-      
     </style>
+    @yield('styles')
+
 </head>
 
 <body>
 
     <script src="{{ asset('css/bootstrap.min.js') }}"></script>
     @include('components.header')
-
+    @yield('breadcrumb')
 
     <main>
         @if ($errors->any())

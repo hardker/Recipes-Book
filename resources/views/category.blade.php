@@ -1,21 +1,25 @@
 @extends('shablons.shablon-main')
 @section('titles', 'Категории')
-
+@section('breadcrumb')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Категории</li>
+        </ol>
+    </nav>
+@endsection
 @section('main_content')
-    {{-- @include('includes.categories') --}}
-
     <h1> {{ $title }}</h1>
+
     <div class="container">
         @if (count($recipes))
             @foreach ($recipes as $rec)
                 {{-- <a href={{ route('cat', $cat->slug) }}> --}}
                 <h2> {{ $rec->title }}</h2>
-                <a class="text-decoration-none" href="{{ route('recipe', $rec->slug) }}">
+                <a class="text-decoration-none" href="{{ route('recipe', $rec->slug) }}" >
                     <div class="row justify-content-start">
                         <div class="col-4">
-
-                            <img src="{{ asset('img/' . $rec->slug . '.jpeg') }}" alt="{{ $rec->title }}" widht="250"
-                                height="250">
+                            <img src="{{ asset($rec->path) }}" alt="{{ $rec->title }}" widht="250" height="250" onError="this.src='/img/img_not_found.gif'; this.onerror=null">
                         </div>
                         <div class="col-5">
                             <div class="container text-left">
@@ -33,7 +37,6 @@
                                 {{ $rec->calorie }}
                                 калорий
 
-
                                 <div class="rating">
                                     Рейтинг:
                                     {!! str_repeat(
@@ -48,14 +51,17 @@
                     </div>
                 </a>
             @endforeach
-
-
-            <p> {{ $recipes->links('includes.pagination') }}</p>
+            <p> {{ $recipes->links('components.pagination') }}</p>
         @else
             <div>
-                Добавьте любимые рецепты в избранное нажав на кнопку снизу каждого рецепта
+                @auth()
+                    В избранном пока ничего нет.
+                    Добавьте любимые рецепты в избранное нажав на кнопку снизу каждого рецепта
+                @else
+                    Для добавления любимых рецептов в избранное пожалуйста <a href="{{ route('login') }}" class="ms-0">
+                        авторизируйтесь</a>
+                @endauth
             </div>
-
         @endif
-
-    @endsection
+    </div>
+@endsection

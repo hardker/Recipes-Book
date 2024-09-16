@@ -11,6 +11,16 @@ class Recipe extends Model
 {
   use HasFactory;
   //  protected $table = 'recipes';
+  protected $fillable = [
+    'category_id',
+    'title',
+    'text',
+    'ingredients',
+    'timing',
+    'calorie',
+    'slug',
+    'path',
+];
 
   public function category() :BelongsTo
   {

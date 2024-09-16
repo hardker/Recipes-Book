@@ -22,9 +22,9 @@ Route::get('cat/{slug}', [CategoriesController::class, 'index'])->name('cat');
 Route::get('fav', [CategoriesController::class, 'favorite'])->name('fav');
 
 Route::get('recipe/{slug}', [RecipesController::class, 'index'])->name('recipe');
-Route::get('/recipe/{id}/fav/{status}', [RecipesController::class, 'in_favorite' ])->name('InFavorite');
+Route::get('recipe/{id}/fav/{status}', [RecipesController::class, 'in_favorite' ])->name('InFavorite');
 
-Route::post('comment-new',[RecipesController::class, 'new_comment'])->name('CommentCreate');
+Route::post('comment',[RecipesController::class, 'add_comment'])->name('comment.add');
 
 
 Route::get('about', function () { return view('about'); })->name('about');;
@@ -39,4 +39,6 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', [UserController::class, 'dashboard'])->name('dashboard');
     Route::get('logout', [UserController::class, 'logout'])->name('logout');
+    Route::get('new', [RecipesController::class, 'new_recipe'])->name('recipe.new');
+    Route::post('add', [RecipesController::class, 'add_recipe'])->name('recipe.add');
 });

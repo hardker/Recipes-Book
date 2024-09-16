@@ -9,27 +9,35 @@
     <link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/bootstrap-icons.min.css')); ?>" rel="stylesheet">
     
-<!--Обводим значки при наведении -->
+    <!--Обводим значки при наведении -->
     <style>
-        [class*="col"],
+        body {
+            background-color: #fdf5e6;
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+            overflow: scroll;
+        }
+
+        [class*="btn"],
         h2,
         p {
-            border: 2px;
-        }
 
-        i:hover {
-            -webkit-text-stroke: 2px;
+            /* border: 2px; */
+            i:hover {
+                -webkit-text-stroke: 2px;
+            }
         }
-
-      
     </style>
+    <?php echo $__env->yieldContent('styles'); ?>
+
 </head>
 
 <body>
 
     <script src="<?php echo e(asset('css/bootstrap.min.js')); ?>"></script>
     <?php echo $__env->make('components.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
+    <?php echo $__env->yieldContent('breadcrumb'); ?>
 
     <main>
         <?php if($errors->any()): ?>
