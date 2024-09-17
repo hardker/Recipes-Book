@@ -18,7 +18,6 @@
         <div class="container text-left">
             <form role="form" method="POST" enctype="multipart/form-data" action="{{ route('recipe.add') }}"
                 id="image-upload">
-                {{--  action="jаvascript:void(0)" --}}
                 <div class="form-group">
                     @csrf
                     <div class="row justify-content-start">
@@ -29,8 +28,7 @@
                                 aria-label="Выбор категории" id='category_id' name="category_id" required>
                                 <option value>Выберите категорию</option>
                                 @foreach ($categories as $category)
-                                <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>
-                                    {{-- <option value="{{ $category->id }}"{{ old('category') == $category->id ? 'selected' : '' }}> --}}
+                                    <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>
                                         {{ $category->name_cat }}</option>
                                 @endforeach
                                 @error('category_id')
@@ -55,10 +53,10 @@
                     <div class="col-4">
                         <div class="form-group">
                             <label for="images"class="h4 form-label">Выберите фото рецепта</label>
-                            <img id="preview-image-before-upload" src="/img/img_not_found.gif" alt="preview image"
+                            <img id="preview-images" src="/img/img_not_found.gif" alt="preview image"
                                 widht="300" height="300">
-                            <input aria-describedby="images_file" type="file" id='images' name="images"
-                                class="form-control" accept=".jpg,.jpeg,.bmp,.png,.gif">
+                            <input aria-describedby="images_file" type="file" id='images' name="images""
+                                class="form-control" accept=".jpg,.jpeg,.bmp,.png,.gif,.webp">
                         </div>
                     </div>
 
@@ -91,16 +89,23 @@
                     </div>
                     {{-- </div> --}}
                     <br>
-                    <h4>Время приготовления</h4>
+
+                    <div class="form-group">
+                        {{-- <h4>Время приготовления</h4>                       --}}
+                        <label for="timing"class="h4 form-label">Время приготовления</label>
+                        <input type="text" id='timing' name="timing" value="{{ old('timing') }}" class="form-control"
+                            placeholder="Введите время приготовления рецепта">
+                    </div>
+                    <br>
+
+                    <div class="form-group">
+                        {{-- <h4>Калорийность</h4>                       --}}
+                        <label for="calorie"class="h4 form-label">Калорийность в калориях</label>
+                        <input type="text" id='calorie' name="calorie" value="{{ old('calorie') }}"
+                            class="form-control" placeholder="Введите калорийность рецепта" maxlength="40" >
+                    </div>
 
                     <br>
-                    <h4>Калорийность</h4>
-
-                    калорий
-                    <br>
-                    {{-- <div style="white-space: pre-wrap;"> --}}
-
-
                     <div class="form-group">
                         <label for="ingredients" class="h4 form-label">Ингредиенты рецепта<span
                                 class="text-danger">*</span></label>
@@ -109,9 +114,7 @@
                         @error('ingredients')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-
                     </div>
-
 
                     {{-- </div> --}}
                 </div>
@@ -135,29 +138,10 @@
             $('#images').change(function() {
                 let reader = new FileReader();
                 reader.onload = (e) => {
-                    $('#preview-image-before-upload').attr('src', e.target.result);
+                    $('#preview-images').attr('src', e.target.result);
                 }
                 reader.readAsDataURL(this.files[0]);
             });
-            // $('#image-upload').submit(function(e) {
-            //     e.preventDefault();
-            //     var formData = new FormData(this);
-            //     $.ajax({
-            //         type: 'POST',
-            //         url: "{{ route('recipe.add') }}",
-            //         dаta: formData,
-            //         cache: false,
-            //         contentType: false,
-            //         processdаta: false,
-            //         success: (data) => {
-            //             this.reset();
-            //             alert('Изображение было успешно загружено');
-            //         },
-            //         error: function(data) {
-            //             console.log(data);
-            //         }
-            //     });
-            // });
         });
     </script>
 

@@ -45,9 +45,9 @@ class RecipesController extends Controller
     public function add_comment(Request $request)
     {
         $request->validate([
-            'name' => ['max:255'],
-            'email' => ['required', 'email', 'max:255'],
-            'rating' => ['required', 'integer', 'between:1,5'],
+            'name' => 'max:255',
+            'email' => 'required|email|max:255',
+            'rating' => 'required|integer|between:1,5',
         ]);
         Comment::updateOrCreate([
             'recipe_id' => $request->recipe_id,
@@ -67,10 +67,11 @@ class RecipesController extends Controller
     public function add_recipe(Request $request)
     {
         $request->validate([
-            'category_id' => ['required'],
-            'title' => ['required', 'unique:Recipes', 'max:255'],
-            'text' => ['required'],
-            'ingredients' => ['required', ''],
+            'category_id' => 'required',
+            'title' => 'required|unique:Recipes|max:255',
+            'text' => 'required',
+            'ingredients' => 'required',
+            'calorie' => 'nullable|integer'
         ]);
         dump($request);
         $slug = $this->translit_slug($request->title);
@@ -88,6 +89,8 @@ class RecipesController extends Controller
             'description' => $request->description,
             'text' => $request->text,
             'ingredients' => $request->ingredients,
+            'timing' => $request->timing,
+            'calorie' => $request->calorie,
             'slug' => $slug,
             'path' => $path,
         ]);

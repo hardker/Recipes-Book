@@ -75,8 +75,8 @@
         <div class="container text-left">
             <div class="row justify-content-start">
                 <div class="col-4">
-                    <img src="{{ asset($recipe->path) }}" alt="{{ $recipe->slug }}" widht="300" height="300"
-                        id='image' onError="this.src='../img/img_not_found.gif'; this.onerror=null">
+                    <img src="{{ asset($recipe->path) }}" alt="{{ $recipe->slug }}" widht="300" height="300" id='image'
+                        onError="this.src='../img/img_not_found.gif'; this.onerror=null">
                 </div>
                 <div class="col-6"; font-weight:bold>
                     <br>
@@ -87,19 +87,18 @@
                 </div>
             </div>
             <div>
-                <h4>Приготовление рецепта</h4>
-                <div style="white-space: pre-wrap;">
+                <h3>Приготовление рецепта</h3>
+                {{-- <div class="text-nowrap bg-body-secondary border"> --}}
+                <div class="lh-sm fs-5" style="white-space: break-spaces">
                     {{ $recipe->text }}
                 </div>
-                <h4>Время приготовления</h4>
-                {{ $recipe->timing }}
+                <h5>Время приготовления: {{ $recipe->timing }}</h5>
                 <br>
-                <h4>Калорийность</h4>
-                {{ $recipe->calorie }}
-                калорий
+                <h5>Калорийность: {{ $recipe->calorie }} калорий</h5>
+
                 <br>
                 <h4>Ингредиенты</h4>
-                <div style="white-space: pre-wrap;">
+                <div class="lh-sm fs-5" style="white-space: break-spaces">
                     {{ $recipe->ingredients }}
                 </div>
             </div>
@@ -107,15 +106,12 @@
             @auth
                 <div class=" whitespace-nowrap flex justify-between w-max gap-5">
                     @if (!$stat or $stat->status == false)
-                        <a href="{{ route('InFavorite', ['id' => $recipe->id, 'status' => '1']) }}"
-                            class="btn btn-outline-danger">
-                            <i width="16" height="16" fill="currentColor" class="bi bi-heart-fill"
-                                viewBox="0 0 16 16"></i>
+                        <a href="{{ route('InFavorite', ['id' => $recipe->id, 'status' => '1']) }}" class="btn btn-outline-danger">
+                            <i width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"></i>
                             Добавить в избранное
                         </a>
                     @else
-                        <a href="{{ route('InFavorite', ['id' => $recipe->id, 'status' => '0']) }}"
-                            class="btn btn-outline-danger">
+                        <a href="{{ route('InFavorite', ['id' => $recipe->id, 'status' => '0']) }}" class="btn btn-outline-danger">
                             <i width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
                             </i>
                             Убрать из избранного
@@ -138,13 +134,8 @@
                     @foreach ($recipe->comments as $comment)
                         <div class=" review-content">
                             <p class="mt-1"> Отзыв
-                                {{-- <img src="https://www.w3schools.com/howto/img_avatar.png" class="avatar "> --}}
                                 <span class="font-weight-bold ml-2">{{ $comment->name }}</span>
-                                {{-- <span class="font ml-2">{{ $comment->email }}</span> --}}
-                                {!! str_repeat(
-                                    '<span><i style="font-size: 1rem; color:#deb217; " class="bi bi-star-fill"></i></span>',
-                                    floor($comment->rating),
-                                ) !!}
+                                {!! str_repeat('<span><i style="font-size: 1rem; color:#deb217; " class="bi bi-star-fill"></i></span>', floor($comment->rating)) !!}
                                 {!! str_repeat('<span><i class="bi bi-star"></i></span>', 5 - floor($comment->rating)) !!}
                                 {{ number_format($comment->rating, 1) }}
                             </p>
@@ -163,8 +154,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-10 mt-4 ">
-                <form class="py-2 px-4" style="box-shadow: 0 0 10px 0 #ddd;" action="{{ route('comment.add') }}"
-                    method="POST" autocomplete="off">
+                <form class="py-2 px-4" style="box-shadow: 0 0 10px 0 #ddd;" action="{{ route('comment.add') }}" method="POST" autocomplete="off">
                     @csrf
                     <input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
                     <div class="row justify-content-end mb-1">
@@ -183,12 +173,11 @@
                     <div class="form-group row">
                         <div class=" col-sm-6">
                             @auth
-                                <input class="form-control" type="text" name="name" value="{{ Auth::user()->name }}"
-                                    maxlength="40" required readonly />
+                                <input class="form-control" type="text" name="name" value="{{ Auth::user()->name }}" maxlength="40" required
+                                    readonly />
                             @endauth
                             @guest
-                                <input class="form-control" type="text" name="name" placeholder="Ваше имя" maxlength="40"
-                                    required />
+                                <input class="form-control" type="text" name="name" placeholder="Ваше имя" maxlength="40" required />
                                 @error('name')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -204,12 +193,11 @@
                         <div class="col-sm-6">
 
                             @auth
-                                <input class="form-control" type="email" name="email" value="{{ Auth::user()->email }}"
-                                    maxlength="40" required readonly />
+                                <input class="form-control" type="email" name="email" value="{{ Auth::user()->email }}" maxlength="40" required
+                                    readonly />
                             @endauth
                             @guest
-                                <input class="form-control" type="email" name="email" placeholder="Ваш Email" maxlength="80"
-                                    required />
+                                <input class="form-control" type="email" name="email" placeholder="Ваш Email" maxlength="80" required />
                                 @error('email')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -221,8 +209,7 @@
                                 <label for="star5" title="5 звезд">5 stars</label>
                                 <input type="radio" id="star4" class="rate" name="rating" value="4" />
                                 <label for="star4" title="4 звезды">4 stars</label>
-                                <input type="radio" checked id="star3" class="rate" name="rating"
-                                    value="3" />
+                                <input type="radio" checked id="star3" class="rate" name="rating" value="3" />
                                 <label for="star3" title="3 звезды">3 stars</label>
                                 <input type="radio" id="star2" class="rate" name="rating" value="2">
                                 <label for="star2" title="2 звезды">2 stars</label>
@@ -238,8 +225,7 @@
                     </div>
                     <div class="mt-3 ">
                         <button type="submit" class="btn btn-outline-primary me-2">Отправить
-                            <i width="16" height="16" fill="currentColor" class="bi bi-send"
-                                viewBox="0 0 16 16"> </i>
+                            <i width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16"> </i>
                         </button>
                     </div>
                 </form>
