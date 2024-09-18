@@ -1,15 +1,11 @@
 @extends('shablons.shablon-main')
-@section('titles', 'Категории')
+@section('titles', 'Книга')
 @section('breadcrumb')
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Главная</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Категории</li>
-        </ol>
-    </nav>
+            <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none" href="/">Главная</a></li>
+            <li class="breadcrumb-item active " aria-current="page">{{ $bread }}</li>
 @endsection
 @section('main_content')
-    <h1> {{ $title }}</h1>
+    <h1 class="text-center"> {{ $title }}</h1>
 
     <div class="container">
         @if (count($recipes))

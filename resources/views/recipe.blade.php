@@ -1,5 +1,5 @@
 @extends('shablons.shablon-main')
-@section('titles', 'Рецепты')
+@section('titles', 'Рецепт')
 
 @section('styles')
     <style>
@@ -45,28 +45,21 @@
             color: #c59b08;
         }
 
-        .rating-container .form-control:hover,
-        .rating-container .form-control:focus {
-            background: #fff;
-            border: 1px solid #ced4da;
-        }
+        /*
+                    .rating-container .form-control:hover,
+                    .rating-container .form-control:focus
+                    {background: #fff; border: 1px solid #ced4da;}
 
-        .rating-container textarea:focus,
-        .rating-container input:focus {
-            color: #000;
-        }
+                    .rating-container textarea:focus,
+                    .rating-container input:focus
+                    { color: #000; }    */
     </style>
 @endsection
 
 @section('breadcrumb')
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Главная</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('cat', $category->slug) }}">Категории</a></li>
-
-            <li class="breadcrumb-item active" aria-current="page">Рецепты</li>
-        </ol>
-    </nav>
+            <li class="breadcrumb-item" ><a class="link-body-emphasis fw-semibold text-decoration-none" href="/">Главная</a></li>
+            <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none" href="{{ route('cat', $category->slug) }}">Книга</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Рецепт</li>
 @endsection
 
 @section('main_content')
@@ -152,32 +145,50 @@
 
     <!-- Новый комментарий -->
     <div class="container">
+
         <div class="row">
             <div class="col-sm-10 mt-4 ">
                 <form class="py-2 px-4" style="box-shadow: 0 0 10px 0 #ddd;" action="{{ route('comment.add') }}" method="POST" autocomplete="off">
                     @csrf
                     <input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
-                    <div class="row justify-content-end mb-1">
+                    @if (Session::has('msg_success'))
+                        <div class="fade show toast-container position-fixed bottom-0 end-0 p-2 text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true"
+                            data-bs-delay="1000" data-bs-autohide="true">
+                            <div class="d-flex">
+                                <div class="toast-body">
+                                    <strong>ПОЗДРАВЛЯЮ!</strong><br>
+                                    {!! session('msg_success') !!}
+                                </div>
+                                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                                    aria-label="Закрыть"></button>
+                            </div>
+                        </div>
+                    @endif
+
+
+                    {{-- <div class="row justify-content-end mb-1">
                         <div class="col-sm-8 float-right">
-                            @if (Session::has('flash_msg_success'))
+                            @if (Session::has('msg_success'))
                                 <div class="alert alert-success alert-dismissible p-2">
-                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                    <strong>ПОЗДРАВЛЯЮ!</strong> {!! session('flash_msg_success') !!}
+                                    <a href="?" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <strong>ПОЗДРАВЛЯЮ!</strong> {!! session('msg_success') !!}
                                 </div>
                             @endif
                         </div>
-                    </div>
+                    </div> --}}
 
 
                     <p class="font-weight-bold ">Оставьте отзыв о рецепте:</p>
-                    <div class="form-group row">
+                    <div class="form-group row ">
                         <div class=" col-sm-6">
+                            {{-- Если пользователь авторизован, то заполняем его имя, емаил.  --}}
                             @auth
                                 <input class="form-control" type="text" name="name" value="{{ Auth::user()->name }}" maxlength="40" required
                                     readonly />
                             @endauth
                             @guest
-                                <input class="form-control" type="text" name="name" placeholder="Ваше имя" maxlength="40" required />
+                                <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" placeholder="Ваше имя"
+                                    maxlength="40" required />
                                 @error('name')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -197,7 +208,8 @@
                                     readonly />
                             @endauth
                             @guest
-                                <input class="form-control" type="email" name="email" placeholder="Ваш Email" maxlength="80" required />
+                                <input class="form-control @error('email') is-invalid @enderror" type="email" name="email" placeholder="Ваш Email"
+                                    maxlength="80" required />
                                 @error('email')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -232,9 +244,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
 @endsection

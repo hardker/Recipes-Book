@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('titles', 'Recipes-Book')</title>
     {{-- @vite('resources/css/app.css') --}}
-    
+
 
     {{-- <link rel="icon" type="image/png" href="favicon.png"> --}}
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-icons.min.css') }}" rel="stylesheet">
     {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> --}}
-  
+
     <style>
         body {
             background-color: #fdf5e6;
@@ -21,7 +21,8 @@
             height: 100%;
             overflow: scroll;
         }
-  /* <!--Обводим значки при наведении --> */
+
+        /* <!--Обводим значки при наведении --> */
         [class*="btn"],
         h2,
         p {
@@ -40,7 +41,35 @@
 
     <script src="{{ asset('css/bootstrap.min.js') }}"></script>
     @include('components.header')
-    @yield('breadcrumb')
+
+    <div class="container my-4">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        {{-- <ol class="breadcrumb breadcrumb-chevron p-2 bg-body-tertiary rounded-2"> --}}
+             <ol class="breadcrumb breadcrumb-custom overflow-hidden text-center bg-body-tertiary border rounded-3">
+            @yield('breadcrumb')
+        </ol>
+    </nav>
+    </div>
+
+
+
+
+
+
+   
+     
+
+
+
+
+
+
+
+
+
+
+
+
 
     <main>
         @if ($errors->any())

@@ -17,7 +17,7 @@ class RecipesController extends Controller
         $data['recipe'] = Recipe::with('comments')->where('slug', $slug)->first();
         $data['category'] = $data['recipe']->category;
         $data['stat'] = Like::where('user_id', Auth::id())->where('recipe_id', $data['recipe']->id)->first();
-        dump($data);
+    //    dump($data);
         return view('/recipe', $data);
 
     }
@@ -56,12 +56,12 @@ class RecipesController extends Controller
             'comment' => $request->comment,
             'rating' => $request->rating,
         ]);
-        return back()->with('flash_msg_success', 'Ваш отзыв успешно добавлен!');
+        return back()->with('msg_success', 'Ваш отзыв успешно добавлен!');
     }
     public function new_recipe()
     {
         $categories = Category::all();
-        dump($categories);
+    //    dump($categories);
         return view('create', compact('categories'));
     }
     public function add_recipe(Request $request)
@@ -82,7 +82,7 @@ class RecipesController extends Controller
             $path = 'storage/' . $name;
         }
 
-        dump($path);
+  //      dump($path);
         Recipe::updateOrCreate([
             'category_id' => $request->category_id,
             'title' => $request->title,

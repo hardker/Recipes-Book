@@ -28,7 +28,7 @@
         class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
         <div class="col-md-auto mb-2 mb-md-0">
             <a href="{{ route('home') }}" class="d-inline-flex link-body-emphasis text-decoration-none">
-                <img src="{{ asset('img/logo.png') }}" alt="Логотип">
+                <img src="{{ asset('img/logo.png') }}" alt="Логотип" class="img-fluid" style="height: 60px;">
             </a>
         </div>
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
