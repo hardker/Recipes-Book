@@ -46,20 +46,20 @@
         }
 
         /*
-                    .rating-container .form-control:hover,
-                    .rating-container .form-control:focus
-                    {background: #fff; border: 1px solid #ced4da;}
+                        .rating-container .form-control:hover,
+                        .rating-container .form-control:focus
+                        {background: #fff; border: 1px solid #ced4da;}
 
-                    .rating-container textarea:focus,
-                    .rating-container input:focus
-                    { color: #000; }    */
+                        .rating-container textarea:focus,
+                        .rating-container input:focus
+                        { color: #000; }    */
     </style>
 @endsection
 
 @section('breadcrumb')
-            <li class="breadcrumb-item" ><a class="link-body-emphasis fw-semibold text-decoration-none" href="/">Главная</a></li>
-            <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none" href="{{ route('cat', $category->slug) }}">Книга</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Рецепт</li>
+    <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none" href="/">Главная</a></li>
+    <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none" href="{{ route('cat', $category->slug) }}">Книга</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Рецепт</li>
 @endsection
 
 @section('main_content')
@@ -116,9 +116,6 @@
         </div>
 
         <!-- Отзывы -->
-
-
-
         <div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
 
             <div class="row mt-5">
@@ -151,9 +148,10 @@
                 <form class="py-2 px-4" style="box-shadow: 0 0 10px 0 #ddd;" action="{{ route('comment.add') }}" method="POST" autocomplete="off">
                     @csrf
                     <input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
+                    <!-- Всплывающее сообщение-->
                     @if (Session::has('msg_success'))
-                        <div class="fade show toast-container position-fixed bottom-0 end-0 p-2 text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true"
-                            data-bs-delay="1000" data-bs-autohide="true">
+                        <div class="fade show toast-container position-fixed bottom-0 end-0 p-2 text-bg-primary border-0" role="alert"
+                            aria-live="assertive" aria-atomic="true" data-bs-delay="1000" data-bs-autohide="true">
                             <div class="d-flex">
                                 <div class="toast-body">
                                     <strong>ПОЗДРАВЛЯЮ!</strong><br>

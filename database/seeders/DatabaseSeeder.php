@@ -43,14 +43,15 @@ class DatabaseSeeder extends Seeder
 
 
         //Заполняем категории
-        $arr_cat = array('Первые блюда', 'Вторые блюда', 'Десерт', );
-        //        $arr_img = array('img/pervoe.jpeg', 'img/vtoroe.jpeg', 'img/desert.jpeg', );
-        $arr_slug = array('pervoe', 'vtoroe', 'desert', );
+        $arr_cat = array('Первые блюда', 'Вторые блюда', 'Десерты', );
+        $arr_des = array('Жидкие блюда, приготовленные на основе мясных, рыбных или грибных бульонов; овощных, фруктовых или ягодных отваров; кваса, молока или простокваши', 'Кушанье в виде гарнира (овощей, каши и т.п.), добавляемого к мясу и рыбе; обычно следует после супа (первого блюда) во время обеда или ужина', ' Завершающее блюдо стола, предназначенное для получения приятных вкусовых ощущений в конце обеда или ужина, обычно — сладкие деликатесы', );
+         $arr_slug = array('pervoe', 'vtoroe', 'desert', );
 
         for ($i = 0; $i < 3; $i++) {
             //      DB::table('categories')->insert([
             Category::create([
                 'name_cat' => $arr_cat[$i],
+                'description'=> $arr_des[$i],
                 'images' => 'img/' . $arr_slug[$i] . '.jpeg',
                 'slug' => $arr_slug[$i],
 
@@ -58,9 +59,6 @@ class DatabaseSeeder extends Seeder
         }
 
         //Заполняем рецепты
-        $arr_cat = array('Первые блюда', 'Вторые блюда', 'Десерт', );
-        //        $arr_img = array('img/pervoe.jpeg', 'img/vtoroe.jpeg', 'img/desert.jpeg', );
-        $arr_slug = array('pervoe', 'vtoroe', 'desert', );
         $xml = simplexml_load_file('recipes.xml');
         $i = 0;
         foreach ($xml->recipe as $recipe) {
@@ -92,7 +90,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'user',
                 'email' => 'user@mail.com',
                 'rating' => rand(1, 5),
-                'comment' => 'комментарий юзера ' . $i,
+                'comment' => "комментарий юзера " . $i,
             ]);
 
 

@@ -14,10 +14,10 @@
                 <h2> {{ $rec->title }}</h2>
                 <a class="text-decoration-none" href="{{ route('recipe', $rec->slug) }}" >
                     <div class="row justify-content-start">
-                        <div class="col-4">
+                        <div class="col-3">
                             <img src="{{ asset($rec->path) }}" alt="{{ $rec->title }}" widht="250" height="250" onError="this.src='/img/img_not_found.gif'; this.onerror=null">
                         </div>
-                        <div class="col-5">
+                        <div class="col-6">
                             <div class="container text-left">
                                 Описание рецепта
                                 <div>

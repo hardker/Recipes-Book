@@ -30,5 +30,20 @@ class CategoriesController extends Controller
   //      dump($data);
         return view('category', $data);
     }
+    public function search(Request $request)
+    {
+        $data['title'] = "Поиск по рецептам";
+        $data['bread'] = 'Поиск';
+        $query = $request->input('query');
+        $data['recipes'] = Recipe::where('title', 'LIKE', '%' . $query . '%')
+            ->orWhere('description', 'LIKE', '%' . $query . '%')
+            ->orWhere('ingredients', 'LIKE', '%' . $query . '%')
+            ->orWhere('timing', 'LIKE', '%' . $query . '%')
+            ->orWhere('calorie', 'LIKE', '%' . $query . '%')
+            ->paginate(5);
+    //    dump($data);
+        return view('category', $data);
+
+    }
 
 }
