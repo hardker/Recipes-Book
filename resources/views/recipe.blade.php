@@ -142,7 +142,6 @@
 
     <!-- Новый комментарий -->
     <div class="container">
-
         <div class="row">
             <div class="col-sm-10 mt-4 ">
                 <form class="py-2 px-4" style="box-shadow: 0 0 10px 0 #ddd;" action="{{ route('comment.add') }}" method="POST" autocomplete="off">
@@ -198,9 +197,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-
                         <div class="col-sm-6">
-
                             @auth
                                 <input class="form-control" type="email" name="email" value="{{ Auth::user()->email }}" maxlength="40" required
                                     readonly />

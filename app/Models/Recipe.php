@@ -9,29 +9,32 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Recipe extends Model
 {
-  use HasFactory;
-  //  protected $table = 'recipes';
-  protected $fillable = [
-    'category_id',
-    'title',
-    'text',
-    'ingredients',
-    'timing',
-    'calorie',
-    'slug',
-    'path',
-];
+    use HasFactory;
 
-  public function category() :BelongsTo
-  {
-    return $this->belongsTo(Category::class);
-  }
-  public function comments() :HasMany
-  {
-      return $this->hasMany(Comment::class);
-  }
-  public function averageRating()
-  {
-      return $this->comments()->avg('rating');
-  }
+    //  protected $table = 'recipes';
+    protected $fillable = [
+        'category_id',
+        'title',
+        'text',
+        'ingredients',
+        'timing',
+        'calorie',
+        'slug',
+        'path',
+    ];
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function averageRating()
+    {
+        return $this->comments()->avg('rating');
+    }
 }

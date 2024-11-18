@@ -2,21 +2,20 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 use App\Models\Category;
+use App\Models\Comment;
+use App\Models\Like;
 use App\Models\Recipe;
 use App\Models\User;
-use App\Models\Comment;
-
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
      */
-    public function run(): void
+    public function run() : void
     {
 
         // \App\Models\User::factory(10)->create();
@@ -40,20 +39,20 @@ class DatabaseSeeder extends Seeder
             'is_admin' => false,
         ]);
 
-
+        $users = User::factory()->count(20)->create(); //Создаем фейковых пользователей
 
         //Заполняем категории
-        $arr_cat = array('Первые блюда', 'Вторые блюда', 'Десерты', );
-        $arr_des = array('Жидкие блюда, приготовленные на основе мясных, рыбных или грибных бульонов; овощных, фруктовых или ягодных отваров; кваса, молока или простокваши', 'Кушанье в виде гарнира (овощей, каши и т.п.), добавляемого к мясу и рыбе; обычно следует после супа (первого блюда) во время обеда или ужина', ' Завершающее блюдо стола, предназначенное для получения приятных вкусовых ощущений в конце обеда или ужина, обычно — сладкие деликатесы', );
-         $arr_slug = array('pervoe', 'vtoroe', 'desert', );
+        $arr_cat = ['Первые блюда', 'Вторые блюда', 'Десерты'];
+        $arr_des = ['Жидкие блюда, приготовленные на основе мясных, рыбных или грибных бульонов; овощных, фруктовых или ягодных отваров; кваса, молока или простокваши', 'Кушанье в виде гарнира (овощей, каши и т.п.), добавляемого к мясу и рыбе; обычно следует после супа (первого блюда) во время обеда или ужина', ' Завершающее блюдо стола, предназначенное для получения приятных вкусовых ощущений в конце обеда или ужина, обычно — сладкие деликатесы'];
+        $arr_slug = ['pervoe', 'vtoroe', 'desert'];
 
         for ($i = 0; $i < 3; $i++) {
             //      DB::table('categories')->insert([
             Category::create([
-                'name_cat' => $arr_cat[$i],
-                'description'=> $arr_des[$i],
-                'images' => 'img/' . $arr_slug[$i] . '.jpeg',
-                'slug' => $arr_slug[$i],
+                'name_cat' => (string) $arr_cat[$i],
+                'description' => (string) $arr_des[$i],
+                'images' => (string) 'img/' . $arr_slug[$i] . '.jpeg',
+                'slug' => (string) $arr_slug[$i],
 
             ]);
         }
@@ -65,44 +64,25 @@ class DatabaseSeeder extends Seeder
             $slug = $this->translit_slug($recipe->title);
             //   DB::table('recipes')->insert([
             Recipe::create([
-                'category_id' => (integer) $recipe->category_id,
+                'category_id' => (int) $recipe->category_id,
                 'title' => (string) $recipe->title,
                 'description' => (string) $recipe->description,
                 'text' => (string) $recipe->text,
                 'ingredients' => (string) $recipe->ingredients,
                 'timing' => (string) $recipe->timing,
-                'calorie' => (integer) $recipe->calorie,
+                'calorie' => (int) $recipe->calorie,
                 'slug' => (string) $slug,
                 'path' => (string) 'img/' . $slug . '.jpeg',
             ]);
-
-            //  Заполняем рейтинг случайными значениями
-            Comment::create([
-
-                'recipe_id' => ++$i,
-                'name' => 'gost',
-                'email' => 'gost@mail.com',
-                'rating' => rand(1, 5),
-                'comment' => 'комментарий гостя ' . $i,
-            ]);
-            Comment::create([
-                'recipe_id' => $i,
-                'name' => 'user',
-                'email' => 'user@mail.com',
-                'rating' => rand(1, 5),
-                'comment' => "комментарий юзера " . $i,
-            ]);
-
-
         }
-
-
-
+        Comment::factory()->count(200)->create();
+        Like::factory()->count(100)->recycle($users)->create();
 
     }
-    public function translit_slug($value): string
+
+    public function translit_slug($value) : string
     {
-        $converter = array(
+        $converter = [
             'а' => 'a',
             'б' => 'b',
             'в' => 'v',
@@ -136,12 +116,13 @@ class DatabaseSeeder extends Seeder
             'э' => 'e',
             'ю' => 'yu',
             'я' => 'ya',
-        );
+        ];
         $value = mb_strtolower($value);
         $value = strtr($value, $converter);
         $value = mb_ereg_replace('[^-0-9a-z]', '-', $value);
         $value = mb_ereg_replace('[-]+', '-', $value);
         $value = trim($value, '-');
+
         return $value;
     }
 }

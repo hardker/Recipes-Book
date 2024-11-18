@@ -21,8 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
-    ];
+        'password',];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -31,8 +30,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
-    ];
+        'remember_token',];
 
     /**
      * The attributes that should be cast.
@@ -41,10 +39,9 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password'=>'hashed'
-    ];
+        'password' => 'hashed',];
 
-    public function likes() :HasMany
+    public function likes() : HasMany
     {
         return $this->hasMany(Like::class);
     }
