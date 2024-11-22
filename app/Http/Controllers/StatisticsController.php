@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -24,6 +25,27 @@ class StatisticsController extends Controller
         $logs = UserLog::latest()->get();
 
 
+        // Данные для графиков
+        $recipesByMonth = $this->getRecipesByMonth();
+        // Проверка данных
+        if (empty($recipesByMonth['labels']) || empty($recipesByMonth['data'])) {
+            $recipesByMonth = ['labels' => [], 'data' => []];
+        }
+
+        $commentsByMonth = $this->getCommentsByMonth();
+        if (empty($commentsByMonth['labels']) || empty($commentsByMonth['data'])) {
+            $commentsByMonth = ['labels' => [], 'data' => []];
+        }
+        $statisticsData = $this->getStatisticsData();
+        if (empty($statisticsData['pageViews']) && empty($statisticsData['linkClicks']) && empty($statisticsData['timeOnSite'])) {
+            $statisticsData = ['pageViews' => 0, 'linkClicks' => 0, 'timeOnSite' => 0];
+        }
+
+        $recipesByCategories = $this->getRecipesByCategories();
+
+        // $lastLoginByDay = $this->getLastLoginByDay();
+        dump($recipesByCategories);
+
         return view('about', compact(
             'totalRecipe',
             'totalComments',
@@ -32,10 +54,10 @@ class StatisticsController extends Controller
             'logs',
             'totalRating',
             'totalFav',
-            // 'postsByMonth',
-            // 'commentsByMonth',
-            // 'analyticsData',
-            // 'lastLoginByDay',
+            'recipesByMonth',
+            'commentsByMonth',
+            'statisticsData',
+             'recipesByCategories',
         ));
 
     }
@@ -43,12 +65,77 @@ class StatisticsController extends Controller
     public function deletelog($id)
     {
         UserLog::destroy($id);
-        return redirect()->back()->with('msg_success', 'Строка успешно удалена!');;
+        return redirect()->back()->with('msg_success', 'Строка успешно удалена!');
+        ;
     }
 
     public function deletelogs()
     {
         UserLog::truncate();
-        return redirect()->back()->with('msg_success', 'Лог успешно очищен!');;
+        return redirect()->back()->with('msg_success', 'Лог успешно очищен!');
+        ;
+    }
+
+
+    // Рецепты за месяц
+    private function getRecipesByMonth()
+    {
+        $recipes = Recipe::selectRaw('DATE_FORMAT(created_at, "%Y-%m") as month, COUNT(*) as count')
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get();
+
+        return [
+            'labels' => $recipes->pluck('month'),
+            'data' => $recipes->pluck('count')
+        ];
+    }
+    // Комментарии за месяц
+    private function getCommentsByMonth()
+    {
+        $comments = Comment::selectRaw('DATE_FORMAT(created_at, "%Y-%m") as month,COUNT(*) as count')
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get();
+
+        return [
+            'labels' => $comments->pluck('month'),
+            'data' => $comments->pluck('count')
+        ];
+    }
+    // Статистика просмотров
+    private function getStatisticsData()
+    {
+        // Группируем просмотры по датам
+        $pageViewsByDate = UserLog::selectRaw('DATE(created_at) as date, COUNT(*) as views')
+            ->groupBy('date')
+            ->orderBy('date')
+            ->get();
+
+        $pageViews = $pageViewsByDate->sum('views'); // Общее количество просмотров
+        // $linkClicks = Analytic::where('event_type', 'link_click')->count();
+        // $timeOnSite = Analytic::where('event_type', 'time_on_site')->count();
+   
+
+        return [
+            'pageViews' => $pageViews,
+            'data' => $pageViewsByDate->pluck('views')->toArray(),
+            'labels' => $pageViewsByDate->pluck('date')->toArray(),
+            // 'linkClicks' => $linkClicks,
+            // 'timeOnSite' => $timeOnSite
+        ];
+    }
+
+    // Рецепты по категориям
+    private function getRecipesByCategories()
+    {
+        $category = Category::select('id','name_cat')->withCount('recipes as count')
+            ->orderBy('id')
+            ->get();
+       
+        return [
+            'labels' => $category->pluck('name_cat')->toArray(),
+            'data' => $category->pluck('count')->toArray(),
+        ];
     }
 }

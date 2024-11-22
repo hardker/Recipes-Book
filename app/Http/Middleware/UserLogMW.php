@@ -5,6 +5,7 @@ use Str;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 use App\Models\UserLog;
 
 class UserLogMW
@@ -22,16 +23,21 @@ class UserLogMW
         if (is_null($userAgent)) {
             return $next($request);
         }
-        // Записываем событие в базу данных
-        UserLog::create([
-            'subject' => session()->getId(),
-            'user_id' => auth()->id(), 
-            'url' => $request->fullUrl(),
-            'ip' => $request->ip(),
-            // 'subject' => $request->format(),
-            //'agent' => Str::substr($userAgent, 0, 255), 
-            'agent' => $userAgent,
-        ]);
+        //Игнорируем админа
+        if (Auth::user() && Auth::user()->isAdmin()) {
+//Добавить кнопки редактирования
+        }else{
+            // Записываем событие в базу данных
+            UserLog::create([
+                'subject' => session()->getId(),
+                'user_id' => auth()->id(),
+                'url' => $request->fullUrl(),
+                'ip' => $request->ip(),
+                // 'subject' => $request->format(),
+                //'agent' => Str::substr($userAgent, 0, 255), 
+                'agent' => $userAgent,
+            ]);
+        }
         return $next($request);
     }
 }

@@ -12,12 +12,18 @@ class Category extends Model
     use HasFactory;
     //     protected $table = 'recipes';
 
-    public function recipes(): HasMany
+    protected $fillable = [
+        'name_cat',
+        'description',
+        'images',
+        'slug',];
+
+    public function recipes() : HasMany
     {
         return $this->hasMany(Recipe::class);
     }
 
-    public function likes(): HasManyThrough
+    public function likes() : HasManyThrough
     {
         return $this->hasManyThrough(Like::class, Recipe::class);
     }

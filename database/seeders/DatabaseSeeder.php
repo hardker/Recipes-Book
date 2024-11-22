@@ -62,6 +62,7 @@ class DatabaseSeeder extends Seeder
         $i = 0;
         foreach ($xml->recipe as $recipe) {
             $slug = $this->translit_slug($recipe->title);
+            $date = fake()->dateTimeBetween('-12 months');
             //   DB::table('recipes')->insert([
             Recipe::create([
                 'category_id' => (int) $recipe->category_id,
@@ -73,6 +74,8 @@ class DatabaseSeeder extends Seeder
                 'calorie' => (int) $recipe->calorie,
                 'slug' => (string) $slug,
                 'path' => (string) 'img/' . $slug . '.jpeg',
+                'created_at' => $date,
+                'updated_at' => $date,
             ]);
         }
         Comment::factory()->count(200)->create();

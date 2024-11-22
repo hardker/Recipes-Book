@@ -30,7 +30,8 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',];
+        'remember_token',
+        'is_admin',];
 
     /**
      * The attributes that should be cast.
@@ -44,5 +45,11 @@ class User extends Authenticatable
     public function likes() : HasMany
     {
         return $this->hasMany(Like::class);
+    }
+
+    // Проверка пользователя на статус администратора
+    public function isAdmin()
+    {
+        return $this->is_admin === 1;
     }
 }

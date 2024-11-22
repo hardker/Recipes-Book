@@ -55,7 +55,7 @@
             @if (Route::has('login'))
                 @auth
                     <div class="user-account">
-                        <span class="user-account__text"> Добро пожаловать {{ auth()->user()->name }}</span>
+                        <span class="text-primary"> Добро пожаловать {{ auth()->user()->name }}</span>
 
                         {{-- <a href="#"></a> --}}
                     </div>
