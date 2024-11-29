@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\DB;
-use App\Models\User;
+use App\Models\Recipe;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Comment>
@@ -21,7 +21,7 @@ class CommentFactory extends Factory
         $date = fake()->dateTimeBetween('-6 months');
         return [
             //
-            'recipe_id' => rand(1, 21),
+            'recipe_id' => rand(1, Recipe::count()),
             'name' => fake('ru_RU')->name(),
             'email' => fake()->unique()->safeEmail(),
             'rating' => rand(1, 5),

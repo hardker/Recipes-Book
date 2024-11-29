@@ -38,7 +38,7 @@
             <li><a href="#" class="nav-link px-2">FAQs</a></li> --}}
             <li><a href="{{ route('about') }}" class="nav-link px-2">About</a></li>
         </ul>
-        <form action="{{ route('search') }}" method="GET"
+        <form action="{{ route('search') }}" method="POST"
             class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 icon-link icon-link-hover" role="search">
             @csrf
             <input type="search" class="form-control" name="query" placeholder="Поиск рецептов..."

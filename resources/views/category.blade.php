@@ -47,7 +47,7 @@
                     </div>
                 </a>
             @endforeach
-            <p> {{ $recipes->links('components.pagination') }}</p>
+            <p> {{ $recipes->appends(Request::except('page'))->links('components.pagination') }}</p>
         @else
             <div>
                 @auth()

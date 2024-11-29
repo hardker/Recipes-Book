@@ -43,8 +43,7 @@ class StatisticsController extends Controller
 
         $recipesByCategories = $this->getRecipesByCategories();
 
-        // $lastLoginByDay = $this->getLastLoginByDay();
-        dump($recipesByCategories);
+        //dump($recipesByCategories);
 
         return view('about', compact(
             'totalRecipe',

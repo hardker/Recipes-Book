@@ -49,7 +49,7 @@
                         <div class="form-group">
                             <label for="images"class="h4 form-label">Выберите фото рецепта</label>
                             <img id="preview-images" src="/img/img_not_found.gif" alt="preview image" widht="300" height="300">
-                            <input aria-describedby="images_file" type="file" id='images' name="images"" class="form-control"
+                            <input aria-describedby="images_file" type="file" id='images' name="images" class="form-control"
                                 accept=".jpg,.jpeg,.bmp,.png,.gif,.webp">
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                             <div class="form-group">
                                 {{-- <h4>Описание рецепта</h4> --}}
                                 <label for="description" class="h4 form-label">Описание рецепта</label>
-                                <textarea class="h4 form-control" name="description" rows="8" placeholder="Введите описание" maxlength="1000"></textarea>
+                                <textarea class="h4 form-control" name="description" rows="8" placeholder="Введите описание" maxlength="1000">{{ old('description') }}</textarea>
                             </div>
                         </i>
                         {{-- </div> --}}

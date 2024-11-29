@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
+use App\Models\Recipe;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Like>
  */
@@ -20,7 +21,7 @@ class LikeFactory extends Factory
         return [
             //
             'user_id' => User::factory(),
-            'recipe_id' => rand(1, 21),
+            'recipe_id' => rand(1, Recipe::count()),
             'status' => true,
             'created_at' => $date,
             'updated_at' => $date,

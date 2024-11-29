@@ -8,7 +8,7 @@ use App\Models\Like;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Str;
 class RecipesController extends Controller
 {
     public function index($slug)
@@ -39,7 +39,6 @@ class RecipesController extends Controller
                 'status' => true,
             ]);
         }
-
         return redirect()->back();
 
     }
@@ -58,14 +57,12 @@ class RecipesController extends Controller
             'comment' => $request->comment,
             'rating' => $request->rating,
         ]);
-
         return back()->with('msg_success', 'Ваш отзыв успешно добавлен!');
     }
 
     public function new_recipe()
     {
         $categories = Category::all();
-
         //    dump($categories);
         return view('create', compact('categories'));
     }
@@ -79,22 +76,22 @@ class RecipesController extends Controller
             'ingredients' => 'required',
             'calorie' => 'nullable|integer',
         ]);
-        dump($request);
+
         $slug = $this->translit_slug($request->title);
         $path = null;
         if ($request->hasFile('images')) {
-            $name = $slug.'.'.$request->images->extension();
+            $name = $slug . '.' . $request->images->extension();
             $request->images->storeAs('public', $name);
-            $path = 'storage/'.$name;
+            $path = 'storage/' . $name;
         }
 
         //      dump($path);
-        Recipe::updateOrCreate([
+        Recipe::Create([
             'category_id' => $request->category_id,
             'title' => $request->title,
-            'description' => $request->description,
-            'text' => $request->text,
-            'ingredients' => $request->ingredients,
+            'description' => trim($request->description),
+            'text' => trim($request->text),
+            'ingredients' => trim($request->ingredients),
             'timing' => $request->timing,
             'calorie' => $request->calorie,
             'slug' => $slug,
@@ -102,10 +99,47 @@ class RecipesController extends Controller
         ]);
 
         // return redirect()->back();
-        return to_route('recipe', $slug);
+        return to_route('recipe', $slug)->with('msg_success', 'Ваш рецепт успешно добавлен!');
+    }
+    public function edit_recipe($slug)
+    {
+        $data['recipe'] = Recipe::where('slug', $slug)->first();
+        $data['categories'] = Category::all();
+       // dump($data);
+        return view('edit', $data);
     }
 
-    public function translit_slug($value): string
+
+    public function upd_recipe($id, Request $request)
+    {
+        $recipe = Recipe::find($id);
+        $request->validate([
+            'category_id' => 'required',
+            'text' => 'required',
+            'ingredients' => 'required',
+            'calorie' => 'nullable|integer',
+        ]);
+        dump($request);
+        $slug = $this->translit_slug($request->title);
+        $path = null;
+        if ($request->hasFile('images')) {
+            $name = $slug . '.' . $request->images->extension();
+            $request->images->storeAs('public', $name);
+            $path = 'storage/' . $name;
+            $recipe->path = $path;
+        }
+        $recipe->category_id = $request->category_id;
+        $recipe->title = $request->title;
+        $recipe->description = trim($request->description);
+        $recipe->text = trim($request->text);
+        $recipe->ingredients = trim($request->ingredients);
+        $recipe->timing = $request->timing;
+        $recipe->calorie = $request->calorie;
+        $recipe->save();
+        return to_route('recipe', $slug)->with('msg_success', 'Изменения успешно сохранены!');
+    }
+
+    public function translit_slug($value) : string
     {
         $converter = [
             'а' => 'a',

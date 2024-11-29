@@ -46,13 +46,13 @@
         }
 
         /*
-                        .rating-container .form-control:hover,
-                        .rating-container .form-control:focus
-                        {background: #fff; border: 1px solid #ced4da;}
+                            .rating-container .form-control:hover,
+                            .rating-container .form-control:focus
+                            {background: #fff; border: 1px solid #ced4da;}
 
-                        .rating-container textarea:focus,
-                        .rating-container input:focus
-                        { color: #000; }    */
+                            .rating-container textarea:focus,
+                            .rating-container input:focus
+                            { color: #000; }    */
     </style>
 @endsection
 
@@ -74,7 +74,7 @@
                 <div class="col-6"; font-weight:bold>
                     <br>
                     <h4>Описание рецепта</h4>
-                    <div style="white-space: pre-wrap">
+                    <div style="white-space: pre-line">
                         <i> {{ $recipe->description }} </i>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
             <div>
                 <h3>Приготовление рецепта</h3>
                 {{-- <div class="text-nowrap bg-body-secondary border"> --}}
-                <div class="lh-sm fs-5" style="white-space: break-spaces">
+                <div class="lh-sm fs-5" style="white-space: pre-line">
                     {{ $recipe->text }}
                 </div>
                 <h5>Время приготовления: {{ $recipe->timing }}</h5>
@@ -91,10 +91,11 @@
 
                 <br>
                 <h4>Ингредиенты</h4>
-                <div class="lh-sm fs-5" style="white-space: break-spaces">
+                <div class="lh-sm fs-5" style="white-space: pre-line">
                     {{ $recipe->ingredients }}
                 </div>
             </div>
+            <br>
             <!-- Избранное -->
             @auth
                 <div class=" whitespace-nowrap flex justify-between w-max gap-5">
@@ -110,14 +111,16 @@
                             Убрать из избранного
                         </a>
                     @endif
+                    <a href="{{ route('recipe.edit', ['slug' => $recipe->slug]) }}" class="btn btn-outline-success">
+                        <i width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"></i>
+                        Редактировать рецепт
+                    </a>
                 </div>
             @endauth
-
         </div>
 
         <!-- Отзывы -->
         <div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
-
             <div class="row mt-5">
                 <h4>Отзывы о рецепте:</h4>
                 <div class="col-sm-12 mt-5">
@@ -147,20 +150,7 @@
                 <form class="py-2 px-4" style="box-shadow: 0 0 10px 0 #ddd;" action="{{ route('comment.add') }}" method="POST" autocomplete="off">
                     @csrf
                     <input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
-                    <!-- Всплывающее сообщение-->
-                    @if (Session::has('msg_success'))
-                        <div class="fade show toast-container position-fixed bottom-0 end-0 p-2 text-bg-primary border-0" role="alert"
-                            aria-live="assertive" aria-atomic="true" data-bs-delay="1000" data-bs-autohide="true">
-                            <div class="d-flex">
-                                <div class="toast-body">
-                                    <strong>ПОЗДРАВЛЯЮ!</strong><br>
-                                    {!! session('msg_success') !!}
-                                </div>
-                                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-                                    aria-label="Закрыть"></button>
-                            </div>
-                        </div>
-                    @endif
+
 
 
                     {{-- <div class="row justify-content-end mb-1">
@@ -239,4 +229,19 @@
             </div>
         </div>
     </div>
+
+    <!-- Всплывающее сообщение-->
+    @if (Session::has('msg_success'))
+        <div class="fade show toast-container position-fixed bottom-0 end-0 p-2 text-bg-primary border-0" role="alert" aria-live="assertive"
+            aria-atomic="true" data-bs-delay="1000" data-bs-autohide="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <strong>ПОЗДРАВЛЯЮ!</strong><br>
+                    {!! session('msg_success') !!}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+            </div>
+        </div>
+    @endif
+
 @endsection

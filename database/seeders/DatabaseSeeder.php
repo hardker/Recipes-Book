@@ -9,7 +9,7 @@ use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-
+use Str;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -39,9 +39,7 @@ class DatabaseSeeder extends Seeder
             'is_admin' => false,
         ]);
 
-        $users = User::factory()->count(20)->create(); //Создаем фейковых пользователей
-
-        //Заполняем категории
+         //Заполняем категории
         $arr_cat = ['Первые блюда', 'Вторые блюда', 'Десерты'];
         $arr_des = ['Жидкие блюда, приготовленные на основе мясных, рыбных или грибных бульонов; овощных, фруктовых или ягодных отваров; кваса, молока или простокваши', 'Кушанье в виде гарнира (овощей, каши и т.п.), добавляемого к мясу и рыбе; обычно следует после супа (первого блюда) во время обеда или ужина', ' Завершающее блюдо стола, предназначенное для получения приятных вкусовых ощущений в конце обеда или ужина, обычно — сладкие деликатесы'];
         $arr_slug = ['pervoe', 'vtoroe', 'desert'];
@@ -67,9 +65,9 @@ class DatabaseSeeder extends Seeder
             Recipe::create([
                 'category_id' => (int) $recipe->category_id,
                 'title' => (string) $recipe->title,
-                'description' => (string) $recipe->description,
-                'text' => (string) $recipe->text,
-                'ingredients' => (string) $recipe->ingredients,
+                'description' => (string) trim($recipe->description),
+                'text' => (string) trim($recipe->text),
+                'ingredients' => (string) trim($recipe->ingredients),
                 'timing' => (string) $recipe->timing,
                 'calorie' => (int) $recipe->calorie,
                 'slug' => (string) $slug,
@@ -78,8 +76,8 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => $date,
             ]);
         }
-        Comment::factory()->count(200)->create();
-        Like::factory()->count(100)->recycle($users)->create();
+      
+    
 
     }
 

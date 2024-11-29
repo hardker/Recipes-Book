@@ -226,7 +226,9 @@
                     <tr>
                         <td>{{ ++$key }}</td>
                         <td class="text-primary">{{ $log->created_at }}</td>
-                        <td class="text-success">{{ $log->url }}</td>
+                        <td class="text-success">
+                            <a href=" {{ $log->url }}">{{ $log->url }}</a>
+                        </td>
                         {{-- <td><label class="label label-info">{{ $log->method }}</label></td> --}}
                         <td class="text-info">{{ $log->ip }}</td>
                         <td class="text-danger">{{ $log->agent }}</td>
