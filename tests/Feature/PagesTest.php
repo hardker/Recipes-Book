@@ -25,7 +25,7 @@ class PagesTest extends TestCase
     public function test_registration_screen() : void
     {
         $response = $this->get('/register');
-        $response->assertOk()->assertViewIs('home');
+        $response->assertOk()->assertViewIs('user.create');
     }
 
     public function test_new_users()

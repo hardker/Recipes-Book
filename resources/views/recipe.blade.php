@@ -46,13 +46,13 @@
         }
 
         /*
-                            .rating-container .form-control:hover,
-                            .rating-container .form-control:focus
-                            {background: #fff; border: 1px solid #ced4da;}
+                                                                .rating-container .form-control:hover,
+                                                                .rating-container .form-control:focus
+                                                                {background: #fff; border: 1px solid #ced4da;}
 
-                            .rating-container textarea:focus,
-                            .rating-container input:focus
-                            { color: #000; }    */
+                                                                .rating-container textarea:focus,
+                                                                .rating-container input:focus
+                                                                { color: #000; }    */
     </style>
 @endsection
 
@@ -95,28 +95,51 @@
                     {{ $recipe->ingredients }}
                 </div>
             </div>
-            <br>
-            <!-- Избранное -->
-            @auth
-                <div class=" whitespace-nowrap flex justify-between w-max gap-5">
-                    @if (!$stat or $stat->status == false)
-                        <a href="{{ route('InFavorite', ['id' => $recipe->id, 'status' => '1']) }}" class="btn btn-outline-danger">
-                            <i width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"></i>
-                            Добавить в избранное
+
+        </div>
+        <!-- Автор-->
+        <div class="lh-sm fs-5">
+            <div class="col-md-9 border px-5 py-4 mx-auto d-sm-flex align-items-center">
+                <img class="img-fluid rounded-circle mr-4" style="width: 120px; border: 8px solid #9B5DE5;" src="/img/no_user.png" alt="">
+                <div style="padding: 10px">
+                    <span style="font-weight: 600; color: #9B5DE5;">Автор рецепта</span>
+                    <h4>{{ $avtor->name }} </h4>
+                    <p class="text-secondary">Всего рецептов у автора: {{ $avtor_count }}.
+                        <a href="{{ $url = route('avtor', ['id' => $avtor->id, 'avtor' => $avtor->name]) }}" title="Перейти">Посмотреть все</a>
+                    </p>
+{{-- Если пользователь автор или админ, то добавляем кнопки редактировать и удалить --}}
+                    <br>
+                    <!-- Избранное -->
+                    <div class=" whitespace-nowrap flex justify-between w-max gap-5">
+                        @auth
+                            @if (!$stat or $stat->status == false)
+                                <a href="{{ route('InFavorite', ['id' => $recipe->id, 'status' => '1']) }}" class="btn btn-outline-info">
+                                    <i width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"></i>
+                                    Добавить в избранное
+                                </a>
+                            @else
+                                <a href="{{ route('InFavorite', ['id' => $recipe->id, 'status' => '0']) }}" class="btn btn-outline-info">
+                                    <i width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                    </i>
+                                    Убрать из избранного
+                                </a>
+                            @endif
+                            <a href="{{ route('recipe.edit', ['slug' => $recipe->slug]) }}" class="btn btn-outline-success">
+                                <i width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"></i>
+                                Редактировать рецепт
+                            </a>
+                            <a href="{{ route('recipe.del', ['slug' => $recipe->slug]) }}" class="btn btn-outline-danger">
+                                <i width="16" height="16" fill="currentColor" class="bi bi-journal-x" viewBox="0 0 16 16"></i>
+                                Удалить рецепт
+                            </a>
+                        @endauth
+                        <a href="{{ route('recipe.pdf', ['slug' => $recipe->slug]) }}" class="btn btn-outline-info">
+                            <i width="16" height="16" fill="currentColor" class="bi bi-filetype-pdf" viewBox="0 0 16 16"></i>
+                            Сохранить в PDF
                         </a>
-                    @else
-                        <a href="{{ route('InFavorite', ['id' => $recipe->id, 'status' => '0']) }}" class="btn btn-outline-danger">
-                            <i width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                            </i>
-                            Убрать из избранного
-                        </a>
-                    @endif
-                    <a href="{{ route('recipe.edit', ['slug' => $recipe->slug]) }}" class="btn btn-outline-success">
-                        <i width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"></i>
-                        Редактировать рецепт
-                    </a>
+                    </div>
                 </div>
-            @endauth
+            </div>
         </div>
 
         <!-- Отзывы -->
@@ -164,7 +187,7 @@
                         </div>
                     </div> --}}
 
-
+                    @csrf
                     <p class="font-weight-bold ">Оставьте отзыв о рецепте:</p>
                     <div class="form-group row ">
                         <div class=" col-sm-6">
@@ -230,18 +253,6 @@
         </div>
     </div>
 
-    <!-- Всплывающее сообщение-->
-    @if (Session::has('msg_success'))
-        <div class="fade show toast-container position-fixed bottom-0 end-0 p-2 text-bg-primary border-0" role="alert" aria-live="assertive"
-            aria-atomic="true" data-bs-delay="1000" data-bs-autohide="true">
-            <div class="d-flex">
-                <div class="toast-body">
-                    <strong>ПОЗДРАВЛЯЮ!</strong><br>
-                    {!! session('msg_success') !!}
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
-            </div>
-        </div>
-    @endif
+
 
 @endsection

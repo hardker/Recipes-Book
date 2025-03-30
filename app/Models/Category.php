@@ -16,7 +16,8 @@ class Category extends Model
         'name_cat',
         'description',
         'images',
-        'slug',];
+        'slug',
+    ];
 
     public function recipes() : HasMany
     {

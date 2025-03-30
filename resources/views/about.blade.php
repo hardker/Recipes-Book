@@ -42,46 +42,46 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                    <div class="card-header py-3 text-bg-primary border-primary">
-                        <h4 class="my-0 fw-normal">ВСЕГО пользователей</h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="card-title pricing-card-title">{{ $totalUsers }}</h1>
-                        {{-- <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button> --}}
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                    <div class="card-header py-3 text-bg-primary border-primary">
-                        <h4 class="my-0 fw-normal">Средняя оценка</h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="card-title pricing-card-title">{{ number_format($totalRating, 1) }}</h1>
-                        {{-- <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button> --}}
+            @if (Auth::check() && Auth::user()->isAdmin())
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                        <div class="card-header py-3 text-bg-primary border-primary">
+                            <h4 class="my-0 fw-normal">ВСЕГО пользователей</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">{{ $totalUsers }}</h1>
+                            {{-- <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button> --}}
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                    <div class="card-header py-3 text-bg-primary border-primary">
-                        <h4 class="my-0 fw-normal">В избранном</h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="card-title pricing-card-title">{{ $totalFav }}</h1>
-                        {{-- <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button> --}}
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                        <div class="card-header py-3 text-bg-primary border-primary">
+                            <h4 class="my-0 fw-normal">Средняя оценка</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">{{ number_format($totalRating, 1) }}</h1>
+                            {{-- <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button> --}}
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                        <div class="card-header py-3 text-bg-primary border-primary">
+                            <h4 class="my-0 fw-normal">В избранном</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">{{ $totalFav }}</h1>
+                            {{-- <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button> --}}
+                        </div>
+                    </div>
+                </div>
+
         </div>
 
 
         <!-- Подключение ApexCharts.js и stats.js файла -->
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-        {{-- <script src="{{ asset('js/stats.js') }}"></script> --}}
-
 
         <!-- Графики -->
         <h2 class="text-2xl font-bold text-gray-900 mb-6">Графики</h2>
@@ -166,12 +166,13 @@
                 data: statisticsData.data
             }],
             xaxis: {
-                categories: statisticsData.labels
+                categories: statisticsData.pageViewsLabels
             }
         });
         pageViewsChart.render();
 
         // График рецептов по категориям
+
         const recipesByCategories = {!! json_encode($recipesByCategories) !!};
         const recByCatChart = new ApexCharts(document.querySelector("#recByCatChart"), {
             chart: {
@@ -196,8 +197,6 @@
         });
         recByCatChart.render();
     </script>
-
-
     <div class="container">
         <div class="d-flex">
             <div class="p-2 w-100">
@@ -242,8 +241,9 @@
                     </tr>
                     <!-- Всплывающее сообщение-->
                     @if (Session::has('msg_success'))
-                        <div class="fade show toast-container position-fixed bottom-0 end-0 p-2 text-bg-primary border-0" role="alert"
-                            aria-live="assertive" aria-atomic="true" data-bs-delay="1000" data-bs-autohide="true">
+                        <div class="fade show toast-container position-fixed bottom-0 end-0 p-2 text-bg-primary border-0"
+                            role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="1000"
+                            data-bs-autohide="true">
                             <div class="d-flex">
                                 <div class="toast-body">
                                     <strong>ПОЗДРАВЛЯЮ!</strong><br>
@@ -259,6 +259,6 @@
         </table>
     </div>
 
-
+    @endif
 
 @endsection

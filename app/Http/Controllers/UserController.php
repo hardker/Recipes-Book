@@ -29,7 +29,7 @@ class UserController extends Controller
 
         //  event(new Registered($user));
         //  Auth::login($user);
-        return redirect()->route('login')->with('success', 'Регистрация выполнена');
+        return redirect()->route('login')->with('msg_success', 'Регистрация выполнена');
     }
 
     public function login()
@@ -46,7 +46,7 @@ class UserController extends Controller
         if (Auth::attempt($validated)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('fav')->with('success', value: 'Добро пожаловать '.Auth::user()->name.'!');
+            return redirect()->intended('fav')->with('msg_success', Auth::user()->name.' Вы успешно авторизованы!');
         }
 
         return back()->withError(['email' => 'Неправильный логин или пароль']);
@@ -86,9 +86,9 @@ class UserController extends Controller
 
         Auth::login($user, true);
         if (Auth::check()) {
-            return redirect()->intended('fav')->with('success', value: 'Добро пожаловать '.Auth::user()->name.'!');
+            return redirect()->intended('fav')->with('msg_success', value: 'Добро пожаловать '.Auth::user()->name.'!');
         }
-        dd($user);
+       // dd($user);
     }
 
     public function telegram()

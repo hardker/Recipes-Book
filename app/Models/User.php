@@ -21,8 +21,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',];
+        'password',
+    ];
 
+   
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -31,7 +33,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'is_admin',];
+        'is_admin',
+    ];
 
     /**
      * The attributes that should be cast.
@@ -52,4 +55,13 @@ class User extends Authenticatable
     {
         return $this->is_admin === 1;
     }
+
+    public function recipes() : HasMany
+    {
+        return $this->hasMany(Recipe::class);
+    }
+
+    // public function getRecipesCount(){
+    //     return $this->recipes()->count();
+    // }
 }

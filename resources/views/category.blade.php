@@ -1,8 +1,8 @@
 @extends('shablons.shablon-main')
 @section('titles', 'Книга')
 @section('breadcrumb')
-            <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none" href="/">Главная</a></li>
-            <li class="breadcrumb-item active " aria-current="page">{{ $bread }}</li>
+    <li class="breadcrumb-item"><a class="link-body-emphasis fw-semibold text-decoration-none" href="/">Главная</a></li>
+    <li class="breadcrumb-item active " aria-current="page">{{ $bread }}</li>
 @endsection
 @section('main_content')
     <h1 class="text-center"> {{ $title }}</h1>
@@ -12,10 +12,11 @@
             @foreach ($recipes as $rec)
                 {{-- <a href={{ route('cat', $cat->slug) }}> --}}
                 <h2> {{ $rec->title }}</h2>
-                <a class="text-decoration-none" href="{{ route('recipe', $rec->slug) }}" >
+                <a class="text-decoration-none" href="{{ route('recipe', $rec->slug) }}">
                     <div class="row justify-content-start">
                         <div class="col-3">
-                            <img src="{{ asset($rec->path) }}" alt="{{ $rec->title }}" widht="250" height="250" onError="this.src='/img/img_not_found.gif'; this.onerror=null">
+                            <img src="{{ asset($rec->path) }}" alt="{{ $rec->title }}" widht="250" height="250"
+                                onError="this.src='/img/img_not_found.gif'; this.onerror=null">
                         </div>
                         <div class="col-6">
                             <div class="container text-left">
@@ -49,14 +50,20 @@
             @endforeach
             <p> {{ $recipes->appends(Request::except('page'))->links('components.pagination') }}</p>
         @else
-            <div>
-                @auth()
-                    В избранном пока ничего нет.
-                    Добавьте любимые рецепты в избранное нажав на кнопку снизу каждого рецепта
+            <div class="alert alert-danger" role="alert">
+                Записей не найдено.
+                @if ($bread === 'Поиск')
+                    Проверьте правильность написания
                 @else
-                    Для добавления любимых рецептов в избранное пожалуйста <a href="{{ route('login') }}" class="ms-0">
-                        авторизируйтесь</a>
-                @endauth
+                    @auth()
+                        <div class="alert alert-primary" role="alert">
+                            Добавьте любимые рецепты в избранное нажав на кнопку снизу каждого рецепта
+                        @else
+                            Для добавления любимых рецептов в избранное пожалуйста <a href="{{ route('login') }}"
+                                class="ms-0"> авторизируйтесь</a>
+                        </div>
+                    @endauth
+                @endif
             </div>
         @endif
     </div>

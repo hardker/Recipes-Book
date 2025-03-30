@@ -1,28 +1,3 @@
-<script>
-    // выпадающий список
-    // function toggleDropdown() {
-    //     document.getElementById('catalog-text').style.display = 'none';
-    //     document.getElementById('catalog-img').style.display = 'none';
-    //     var catalogList = document.getElementById("catalog-list");
-    //     if (catalogList.style.display === "flex") {
-    //         catalogList.style.display = "none";
-
-    //     } else {
-    //         catalogList.style.display = "flex";
-    //     }
-    // }
-
-    // window.onclick = function(event) {
-    //     if (!event.target.matches('.button-catalog, .button-catalog *')) {
-    //         var catalogList = document.getElementById("catalog-list");
-    //         if (catalogList.style.display === "flex") {
-    //             catalogList.style.display = "none";
-    //             document.getElementById('catalog-text').style.display = 'block';
-    //             document.getElementById('catalog-img').style.display = 'block';
-    //         }
-    //     }
-    // }
-</script>
 <div class="container">
     <header
         class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
@@ -38,6 +13,7 @@
             <li><a href="#" class="nav-link px-2">FAQs</a></li> --}}
             <li><a href="{{ route('about') }}" class="nav-link px-2">About</a></li>
         </ul>
+        <!-- Поиск-->
         <form action="{{ route('search') }}" method="POST"
             class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 icon-link icon-link-hover" role="search">
             @csrf
@@ -47,8 +23,9 @@
                 <i width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"> </i>
             </button>
         </form>
-        <a href="{{ route('fav') }}" class="btn btn-outline-primary me-2"> МОЯ КНИГА РЕЦЕПТОВ </a>
-
+        @auth
+            <a href="{{ route('fav') }}" class="btn btn-outline-primary me-2"> МОЯ КНИГА РЕЦЕПТОВ </a>
+        @endauth
         <div class="col-md-auto text-end">
 
 

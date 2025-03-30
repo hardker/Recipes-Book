@@ -22,8 +22,9 @@ use App\Models\UserLog;
 
 Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('/cat/{slug}', [CategoriesController::class, 'index'])->name('cat');
+Route::get('/avtor/{id}', [CategoriesController::class, 'avtor'])->name('avtor');
 Route::any('/search', [CategoriesController::class, 'search'])->name('search');
-
+Route::get('/pdf/{slug}', [RecipesController::class, 'pdf_recipe'])->name('recipe.pdf');
 
 Route::middleware([UserLogMW::class])->group(function () {
     Route::get('/recipe/{slug}', [RecipesController::class, 'index'])->name('recipe');
@@ -45,6 +46,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/login/yandex/callback', [UserController::class, 'yandexCallback'])->name('yandexCallback');
     Route::get('/login/telegram', [UserController::class, 'telegram'])->name('telegram');
     Route::get('/login/telegram/callback', [UserController::class, 'telegramCallback'])->name('telegramCallback');
+    
 });
 Route::middleware('auth')->group(function () {
     // Route::get('dashboard', [UserController::class, 'dashboard'])->name('dashboard');
@@ -52,5 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/new', [RecipesController::class, 'new_recipe'])->name('recipe.new');
     Route::post('/add', [RecipesController::class, 'add_recipe'])->name('recipe.add');
     Route::get('/edit/{slug}', [RecipesController::class, 'edit_recipe'])->name('recipe.edit');
+    Route::get('/del/{slug}', [RecipesController::class, 'del_recipe'])->name('recipe.del');
+    
     Route::post('/upd/{id}', [RecipesController::class, 'upd_recipe'])->name('recipe.upd');
 });

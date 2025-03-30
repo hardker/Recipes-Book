@@ -60,7 +60,7 @@
                             <div class="form-group">
                                 {{-- <h4>Описание рецепта</h4> --}}
                                 <label for="description" class="h4 form-label">Описание рецепта</label>
-                                <textarea class="h4 form-control" name="description" rows="8" placeholder="Введите описание" maxlength="1000">{{ old('description') }}</textarea>
+                                <textarea class="h4 form-control" name="description" rows="8" placeholder="Введите описание" maxlength="1000"></textarea>
                             </div>
                         </i>
                         {{-- </div> --}}

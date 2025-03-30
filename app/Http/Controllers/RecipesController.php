@@ -3,23 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\User;
 use App\Models\Comment;
 use App\Models\Like;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 use Str;
+
 class RecipesController extends Controller
 {
     public function index($slug)
     {
         $data['recipe'] = Recipe::with('comments')->where('slug', $slug)->first();
         $data['category'] = $data['recipe']->category;
+        $data['avtor_count'] = Recipe::where('user_id', $data['recipe']->user_id)->count();
+        $data['avtor'] = $data['recipe']->user;
         $data['stat'] = Like::where('user_id', Auth::id())->where('recipe_id', $data['recipe']->id)->first();
 
-        //    dump($data);
+        //dump($data);
         return view('/recipe', $data);
-
     }
 
     public function in_favorite($id, $status)
@@ -40,7 +45,6 @@ class RecipesController extends Controller
             ]);
         }
         return redirect()->back();
-
     }
 
     public function add_comment(Request $request)
@@ -80,9 +84,9 @@ class RecipesController extends Controller
         $slug = $this->translit_slug($request->title);
         $path = null;
         if ($request->hasFile('images')) {
-            $name = $slug . '.' . $request->images->extension();
+            $name = $slug.'.'.$request->images->extension();
             $request->images->storeAs('public', $name);
-            $path = 'storage/' . $name;
+            $path = 'storage/'.$name;
         }
 
         //      dump($path);
@@ -103,13 +107,21 @@ class RecipesController extends Controller
     }
     public function edit_recipe($slug)
     {
-        $data['recipe'] = Recipe::where('slug', $slug)->first();
+        $data['recipe'] = Recipe::firstWhere('slug', $slug);
         $data['categories'] = Category::all();
-       // dump($data);
+        // dump($data);
         return view('edit', $data);
     }
 
+    public function del_recipe($slug)
+    {
 
+        $recipe = Recipe::firstWhere('slug', $slug);
+        $slug = Category::find($recipe->category_id)->slug;
+        //  dd($slug);     
+        $recipe->delete();
+        return to_route('cat', $slug)->with('msg_success', 'Рецепт успешно удален!');
+    }
     public function upd_recipe($id, Request $request)
     {
         $recipe = Recipe::find($id);
@@ -123,9 +135,9 @@ class RecipesController extends Controller
         $slug = $this->translit_slug($request->title);
         $path = null;
         if ($request->hasFile('images')) {
-            $name = $slug . '.' . $request->images->extension();
+            $name = $slug.'.'.$request->images->extension();
             $request->images->storeAs('public', $name);
-            $path = 'storage/' . $name;
+            $path = 'storage/'.$name;
             $recipe->path = $path;
         }
         $recipe->category_id = $request->category_id;
@@ -138,8 +150,21 @@ class RecipesController extends Controller
         $recipe->save();
         return to_route('recipe', $slug)->with('msg_success', 'Изменения успешно сохранены!');
     }
-
-    public function translit_slug($value) : string
+    public function pdf_recipe($slug)
+    {
+        $data['recipe'] = Recipe::firstWhere('slug', $slug);
+        $data['category'] = $data['recipe']->category;
+        //$data['avtor_count'] = Recipe::where('user_id', $data['recipe']->user_id)->count();
+        $data['avtor'] = $data['recipe']->user;
+        // $data['stat'] = Like::where('user_id', Auth::id())->where('recipe_id', $data['recipe']->id)->first();
+        $data['date'] = date('d.m.Y H:i:s');
+        //  dd($data);     
+        //Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+        //return view('shablons/recipe_pdf', $data);
+         $pdf = Pdf::loadView('shablons/recipe_pdf', $data);
+         return $pdf->download($slug.'.pdf');//->with('msg_success', 'PDF успешно сохранен!');
+    }
+    public function translit_slug($value): string
     {
         $converter = [
             'а' => 'a',

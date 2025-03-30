@@ -13,16 +13,19 @@ return new class extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('category_id')->unsigned();
+            $table->bigInteger('category_id')->unsigned(); //Категория рецепта
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->string('title')->unique();
+            $table->bigInteger('user_id')->unsigned(); //Автор рецепта
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('title')->unique(); //Название рецепта
             $table->text('description')->nullable(); //Описание рецепта
             $table->mediumText('text'); //Приготовление рецепта
             $table->text('ingredients'); //Ингредиенты рецепта
             $table->text('timing')->nullable(); //Время приготовление рецепта
             $table->bigInteger('calorie')->nullable(); //Калорийность рецепта
-            $table->string('slug')->unique();
+            $table->string('slug')->unique(); //Уникальный идентификатор рецепта
             $table->string('path')->nullable(); //Путь до фото с именем файла
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -32,6 +35,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('recipes');
+        Schema::table('recipes', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };

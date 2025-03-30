@@ -10,12 +10,13 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Str;
+
 class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
      */
-    public function run() : void
+    public function run(): void
     {
 
         // \App\Models\User::factory(10)->create();
@@ -39,7 +40,7 @@ class DatabaseSeeder extends Seeder
             'is_admin' => false,
         ]);
 
-         //Заполняем категории
+        //Заполняем категории
         $arr_cat = ['Первые блюда', 'Вторые блюда', 'Десерты'];
         $arr_des = ['Жидкие блюда, приготовленные на основе мясных, рыбных или грибных бульонов; овощных, фруктовых или ягодных отваров; кваса, молока или простокваши', 'Кушанье в виде гарнира (овощей, каши и т.п.), добавляемого к мясу и рыбе; обычно следует после супа (первого блюда) во время обеда или ужина', ' Завершающее блюдо стола, предназначенное для получения приятных вкусовых ощущений в конце обеда или ужина, обычно — сладкие деликатесы'];
         $arr_slug = ['pervoe', 'vtoroe', 'desert'];
@@ -63,6 +64,7 @@ class DatabaseSeeder extends Seeder
             $date = fake()->dateTimeBetween('-12 months');
             //   DB::table('recipes')->insert([
             Recipe::create([
+                'user_id' => rand(1, 2),
                 'category_id' => (int) $recipe->category_id,
                 'title' => (string) $recipe->title,
                 'description' => (string) trim($recipe->description),
@@ -76,12 +78,9 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => $date,
             ]);
         }
-      
-    
-
     }
 
-    public function translit_slug($value) : string
+    public function translit_slug($value): string
     {
         $converter = [
             'а' => 'a',
