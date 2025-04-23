@@ -8,13 +8,21 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use Orchid\Filters\Filterable;
+use Orchid\Screen\AsSource;
+use Orchid\Filters\Types\Like;
+use Orchid\Filters\Types\Where;
+use Orchid\Filters\Types\WhereDateStartEnd;
+use Orchid\Metrics\Chartable;
+
+
 class Recipe extends Model
 {
     use HasFactory;
-    use SoftDeletes; //âêëþ÷èòü ïðîãðàììíîå óäàëåíèå
+    use SoftDeletes; //ÐŸÑ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ð½Ð¾Ðµ ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ðµ
+    use AsSource, Filterable, Chartable;
 
-    //  protected $table = 'recipes';
-    protected $fillable = [
+      protected $fillable = [
         'category_id',
         'user_id',
         'title',
@@ -24,6 +32,27 @@ class Recipe extends Model
         'calorie',
         'slug',
         'path',
+    ];
+
+    protected $allowedFilters = [
+        //'id' => Where::class,
+        'title' => Like::class,
+        'slug' => Like::class,
+        'deleted_at' => WhereDateStartEnd::class,
+        'updated_at' => WhereDateStartEnd::class,
+        'created_at' => WhereDateStartEnd::class,
+        ];
+
+     protected $allowedSorts = [
+        'id',
+        'title',
+        'slug',
+        'user_id',
+        'category_id',
+        'deleted_at',
+        'updated_at',
+        'created_at',
+        'comments_avg_rating'
     ];
 
     protected $dates = ['deleted_at'];

@@ -174,19 +174,6 @@
                     @csrf
                     <input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
 
-
-
-                    {{-- <div class="row justify-content-end mb-1">
-                        <div class="col-sm-8 float-right">
-                            @if (Session::has('msg_success'))
-                                <div class="alert alert-success alert-dismissible p-2">
-                                    <a href="?" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                    <strong>ПОЗДРАВЛЯЮ!</strong> {!! session('msg_success') !!}
-                                </div>
-                            @endif
-                        </div>
-                    </div> --}}
-
                     @csrf
                     <p class="font-weight-bold ">Оставьте отзыв о рецепте:</p>
                     <div class="form-group row ">
@@ -195,6 +182,7 @@
                             @auth
                                 <input class="form-control" type="text" name="name" value="{{ Auth::user()->name }}" maxlength="40" required
                                     readonly />
+                                    
                             @endauth
                             @guest
                                 <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" placeholder="Ваше имя"

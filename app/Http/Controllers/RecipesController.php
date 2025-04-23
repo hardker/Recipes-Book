@@ -131,7 +131,7 @@ class RecipesController extends Controller
             'ingredients' => 'required',
             'calorie' => 'nullable|integer',
         ]);
-        dump($request);
+        //dump($request);
         $slug = $this->translit_slug($request->title);
         $path = null;
         if ($request->hasFile('images')) {

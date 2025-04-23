@@ -1,10 +1,10 @@
 <footer>
 <div class="inf">
-        <div class="inf2">
+        {{-- <div class="inf2">
             <div class="footer-text">Войдите, чтобы сохранить рецепт</div>
             <hr>
             <div class="footer-text-small">С личным кабинетом сохраняйте рецепты</div>
-        </div>
+        </div> --}}
         <div class="inf1">
             <div class="footer-text">Оставайтесь на связи</div>
             <hr>

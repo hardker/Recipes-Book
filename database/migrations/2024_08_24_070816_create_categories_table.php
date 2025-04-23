@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name_cat');
             $table->string('description');
-            $table->string('images');
+            $table->string('path')->nullable();
             $table->string('slug')->unique();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +27,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::table('categories', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };

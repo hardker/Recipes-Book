@@ -68,12 +68,11 @@ class StatisticsController extends Controller
         ;
     }
 
-    public function deletelogs()
-    {
-        UserLog::truncate();
-        return redirect()->back()->with('msg_success', 'Лог успешно очищен!');
-        ;
-    }
+    // public function deletelogs()
+    // {
+    //     UserLog::truncate();
+    //     return redirect()->back()->with('msg_success', 'Лог успешно очищен!');
+    // }
 
 
     // Рецепты за месяц

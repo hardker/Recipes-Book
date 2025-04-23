@@ -32,6 +32,13 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@example.com',
             'password' => Hash::make('admin'),
             'is_admin' => true,
+            //'permissions'=>[{"platform.systems.roles":true,"platform.systems.users":true,"platform.systems.attachment":true,"platform.recipes":true,"platform.categories":true,"platform.analytics":true,"platform.reports":true,"platform.index":true}]
+        ]);
+        User::create([
+            'name' => 'Editor',
+            'email' => 'editor@example.com',
+            'password' => Hash::make('editor'),
+            'is_admin' => true,
         ]);
         User::create([
             'name' => 'User',
@@ -50,7 +57,7 @@ class DatabaseSeeder extends Seeder
             Category::create([
                 'name_cat' => (string) $arr_cat[$i],
                 'description' => (string) $arr_des[$i],
-                'images' => (string) 'img/' . $arr_slug[$i] . '.jpeg',
+                'path' => (string) 'img/' . $arr_slug[$i] . '.jpeg',
                 'slug' => (string) $arr_slug[$i],
 
             ]);
