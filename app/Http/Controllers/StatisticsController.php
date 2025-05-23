@@ -56,7 +56,7 @@ class StatisticsController extends Controller
             'recipesByMonth',
             'commentsByMonth',
             'statisticsData',
-             'recipesByCategories',
+            'recipesByCategories',
         ));
 
     }
@@ -113,7 +113,7 @@ class StatisticsController extends Controller
         $pageViews = $pageViewsByDate->sum('views'); // Общее количество просмотров
         // $linkClicks = Analytic::where('event_type', 'link_click')->count();
         // $timeOnSite = Analytic::where('event_type', 'time_on_site')->count();
-   
+
 
         return [
             'pageViews' => $pageViews,
@@ -127,10 +127,10 @@ class StatisticsController extends Controller
     // Рецепты по категориям
     private function getRecipesByCategories()
     {
-        $category = Category::select('id','name_cat')->withCount('recipes as count')
+        $category = Category::select('id', 'name_cat')->withCount('recipes as count')
             ->orderBy('id')
             ->get();
-       
+
         return [
             'labels' => $category->pluck('name_cat')->toArray(),
             'data' => $category->pluck('count')->toArray(),

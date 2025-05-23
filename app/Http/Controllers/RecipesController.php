@@ -10,16 +10,17 @@ use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
-
-use Str;
+//use Illuminate\Support\Facades\URL;
+//use Illuminate\Support\Facades\Redirect;
+//use Str;
 
 class RecipesController extends Controller
 {
     public function index($slug)
     {
-        $data['recipe'] = Recipe::with('comments')->where('slug', $slug)->first();
+        $data['recipe'] = Recipe::whereNotNull('edit_id')->with('comments')->where('slug', $slug)->first();
         $data['category'] = $data['recipe']->category;
-        $data['avtor_count'] = Recipe::where('user_id', $data['recipe']->user_id)->count();
+        $data['avtor_count'] = Recipe::whereNotNull('edit_id')->where('user_id', $data['recipe']->user_id)->count();
         $data['avtor'] = $data['recipe']->user;
         $data['stat'] = Like::where('user_id', Auth::id())->where('recipe_id', $data['recipe']->id)->first();
 
@@ -75,7 +76,7 @@ class RecipesController extends Controller
     {
         $request->validate([
             'category_id' => 'required',
-            'title' => 'required|unique:Recipes|max:255',
+            'title' => 'required|unique:recipes|max:255',
             'text' => 'required',
             'ingredients' => 'required',
             'calorie' => 'nullable|integer',
@@ -102,8 +103,7 @@ class RecipesController extends Controller
             'path' => $path,
         ]);
 
-        // return redirect()->back();
-        return to_route('recipe', $slug)->with('msg_success', 'Ваш рецепт успешно добавлен!');
+        return back()->with('msg_success', 'Ваш рецепт направлен на модерацию!');
     }
     public function edit_recipe($slug)
     {
@@ -122,9 +122,9 @@ class RecipesController extends Controller
         $recipe->delete();
         return to_route('cat', $slug)->with('msg_success', 'Рецепт успешно удален!');
     }
-    public function upd_recipe($id, Request $request)
+    public function upd_recipe($slug, Request $request)
     {
-        $recipe = Recipe::find($id);
+        $recipe = Recipe::firstWhere('slug', $slug);
         $request->validate([
             'category_id' => 'required',
             'text' => 'required',
@@ -148,7 +148,9 @@ class RecipesController extends Controller
         $recipe->timing = $request->timing;
         $recipe->calorie = $request->calorie;
         $recipe->save();
-        return to_route('recipe', $slug)->with('msg_success', 'Изменения успешно сохранены!');
+        //dd($request);
+        return back()->with('msg_success', 'Изменения успешно сохранены!');
+        //return to_route('recipe', $slug)->with('msg_success', 'Изменения успешно сохранены!');
     }
     public function pdf_recipe($slug)
     {
@@ -161,8 +163,8 @@ class RecipesController extends Controller
         //  dd($data);     
         //Pdf::setOption(['dpi' => 150, 'defaultFont' => 'sans-serif']);
         //return view('shablons/recipe_pdf', $data);
-         $pdf = Pdf::loadView('shablons/recipe_pdf', $data);
-         return $pdf->download($slug.'.pdf');//->with('msg_success', 'PDF успешно сохранен!');
+        $pdf = Pdf::loadView('shablons/recipe_pdf', $data);
+        return $pdf->download($slug.'.pdf');//->with('msg_success', 'PDF успешно сохранен!');
     }
     public function translit_slug($value): string
     {

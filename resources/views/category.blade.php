@@ -6,43 +6,32 @@
 @endsection
 @section('main_content')
     <h1 class="text-center"> {{ $title }}</h1>
-
-    <div class="container">
+    <div class="container-md">
         @if (count($recipes))
             @foreach ($recipes as $rec)
-                {{-- <a href={{ route('cat', $cat->slug) }}> --}}
-                <h2> {{ $rec->title }}</h2>
+                <h2 class="mx-auto"> {{ $rec->title }}</h2>
                 <a class="text-decoration-none" href="{{ route('recipe', $rec->slug) }}">
                     <div class="row justify-content-start">
-                        <div class="col-3">
-                            <img src="{{ asset($rec->path) }}" alt="{{ $rec->title }}" widht="250" height="250"
-                                onError="this.src='/img/img_not_found.gif'; this.onerror=null">
-                        </div>
-                        <div class="col-6">
-                            <div class="container text-left">
-                                Описание рецепта
-                                <div>
-                                    {{ mb_substr($rec->description, 0, 250) }}
-                                    ...
-                                    <br>
-                                    <!--{{ $rec->description }}-->
-                                </div>
-                                Время приготовления
-                                {{ $rec->timing }}
+                        <div class="clearfix">
+                            <img src="{{ asset($rec->path) }}" alt="{{ $rec->title }}" class="float-start mb-3 me-md-3"
+                                style="height: 250px; width: 250px;" onError="this.src='/img/img_not_found.gif'; this.onerror=null">
+                            Описание рецепта
+                            <div>
+                                {{ mb_substr($rec->description, 0, 250) }}
+                                ...
                                 <br>
-                                Калорийность
-                                {{ $rec->calorie }}
-                                калорий
-
-                                <div class="rating">
-                                    Рейтинг:
-                                    {!! str_repeat(
-                                        '<span><i style="font-size: 1rem; color:#deb217;" class="bi bi-star-fill"></i></span>',
-                                        floor($rec->comments_avg_rating),
-                                    ) !!}
-                                    {!! str_repeat('<span><i class="bi bi-star"></i></span>', 5 - floor($rec->comments_avg_rating)) !!}
-                                    {{ number_format($rec->comments_avg_rating, 1) }}
-                                </div>
+                            </div>
+                            Время приготовления
+                            {{ $rec->timing }}
+                            <br>
+                            Калорийность
+                            {{ $rec->calorie }}
+                            калорий
+                            <div class="rating">
+                                Рейтинг:
+                                {!! str_repeat('<span><i style="font-size: 1rem; color:#deb217;" class="bi bi-star-fill"></i></span>', floor($rec->comments_avg_rating)) !!}
+                                {!! str_repeat('<span><i class="bi bi-star"></i></span>', 5 - floor($rec->comments_avg_rating)) !!}
+                                {{ number_format($rec->comments_avg_rating, 1) }}
                             </div>
                         </div>
                     </div>
@@ -59,8 +48,7 @@
                         <div class="alert alert-primary" role="alert">
                             Добавьте любимые рецепты в избранное нажав на кнопку снизу каждого рецепта
                         @else
-                            Для добавления любимых рецептов в избранное пожалуйста <a href="{{ route('login') }}"
-                                class="ms-0"> авторизируйтесь</a>
+                            Для добавления любимых рецептов в избранное пожалуйста <a href="{{ route('login') }}" class="ms-0"> авторизируйтесь</a>
                         </div>
                     @endauth
                 @endif

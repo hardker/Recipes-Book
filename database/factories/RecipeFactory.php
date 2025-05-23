@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
-use Str;
+use App\Models\User;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Comment>
  */
@@ -19,10 +19,12 @@ class RecipeFactory extends Factory
     public function definition() : array
     {
         $date = fake()->dateTimeBetween('-6 months');
-        $name=fake('ru_RU')->unique()->city();
+        $name=fake('ru_RU')->unique()->country();
                 return [
             //
             'category_id' => rand(1, Category::count()),
+            'user_id' => rand(1, User::count()),
+            'edit_id' => 1,
             'title' => $name,
             'ingredients' => fake('ru_RU')->realText(),
             'text' => fake('ru_RU')->realText(),

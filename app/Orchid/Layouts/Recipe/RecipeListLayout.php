@@ -41,9 +41,12 @@ class RecipeListLayout extends Table
             TD::make('user_id', 'Автор')->width('100')->sort()
                 ->render(fn ($model) => $model->user->name),
 
+            TD::make('edit_id', 'Модератор')->width('100')->sort()
+                ->render(fn ($model) => is_null($model->editor) ? null : $model->editor->name),
+
             TD::make('comments_avg_rating', 'Рейтинг')->width('50')->sort()
-                //->asComponent(Number::class, ['decimals' => 1, 'decimal_separator' => ',',])
-                ,
+            //->asComponent(Number::class, ['decimals' => 1, 'decimal_separator' => ',',])
+            ,
 
             TD::make('created_at', 'Дата создания')->defaultHidden()->filter(TD::FILTER_DATE_RANGE)->sort()
                 ->usingComponent(DateTimeSplit::class, upperFormat: 'd.m.Y', lowerFormat: 'H:i:s'),
@@ -57,15 +60,43 @@ class RecipeListLayout extends Table
 
             TD::make(__('Actions'))->align(TD::ALIGN_CENTER)->width('10px')
                 ->render(function (Recipe $recipe) {
-                    return DropDown::make()->icon('bs.three-dots-vertical')->list([
-                        Link::make(__('Edit'))
-                            ->route('recipe.edit', $recipe->slug)
-                            ->icon('bs.pencil'),
+                    if ($recipe->trashed()) {
+                        return DropDown::make()->icon('bs.three-dots-vertical')->list([
+                            Button::make('Восстановить')
+                                ->icon('bs.recycle')
+                                ->method('recover', ['id' => $recipe->id,]),
+                        ]);
+                    } else {
+                        if (is_null($recipe->edit_id)) {
+                            return DropDown::make()->icon('bs.three-dots-vertical')->list([
 
-                        Button::make(__('Delete'))
-                            ->icon('bs.trash3')
-                            ->method('remove', ['id' => $recipe->id,]),
-                    ]);
+                                Button::make('Опубликовать')
+                                    ->icon('bs.shield-check')
+                                    ->method('enable', ['id' => $recipe->id,]),
+                                Link::make(__('view'))
+                                    ->route('recipe.edit', $recipe->slug)
+                                    ->icon('bs.pencil'),
+
+                            ]);
+                        } else {
+                            return DropDown::make()->icon('bs.three-dots-vertical')->list([
+
+                                Button::make('Снять с публикации')
+                                    ->icon('bs.shield-slash')
+                                    ->method('disable', ['id' => $recipe->id,]),
+
+                                Link::make(__('Edit'))
+                                    ->route('recipe.edit', $recipe->slug)
+                                    ->icon('bs.pencil'),
+
+                                Button::make(__('Delete'))
+                                    ->icon('bs.trash3')
+                                    ->method('remove', ['id' => $recipe->id,]),
+                            ]);
+
+                        }
+
+                    }
                 }),
         ];
     }

@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('titles', 'Recipes-Book')</title>
-    {{-- @vite('resources/css/app.css') --}}
-
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     {{-- <link rel="icon" type="image/png" href="favicon.png"> --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"

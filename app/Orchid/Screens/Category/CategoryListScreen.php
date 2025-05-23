@@ -9,6 +9,8 @@ use App\Models\Category;
 use Orchid\Screen\Action;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
+use Illuminate\Http\Request;
+use Orchid\Support\Facades\Toast;
 
 class CategoryListScreen extends Screen
 {
@@ -71,5 +73,15 @@ class CategoryListScreen extends Screen
         return [
             CategoryListLayout::class,
         ];
+    }
+    public function remove(Request $request): void
+    {
+        Category::findOrFail($request->get('id'))->delete();
+        Toast::info('Категория успешно удалена');
+    }
+    public function recover(Request $request): void
+    {
+        Category::withTrashed()->find($request->get('id'))->restore();
+        Toast::info('Категорият успешно восстановлена');
     }
 }

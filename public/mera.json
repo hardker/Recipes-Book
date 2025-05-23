@@ -1,0 +1,1770 @@
+[
+    {
+        "product": "Авокадо",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "220"
+    },
+    {
+        "product": "Агар-агар",
+        "teaspoon": 2.5,
+        "tablespoon": "5",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Аджика",
+        "teaspoon": 5.5,
+        "tablespoon": "17",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Альбумин",
+        "teaspoon": 3.5,
+        "tablespoon": "14",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Апельсин",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Апельсиновый сок",
+        "teaspoon": "5",
+        "tablespoon": "18",
+        "glass200": "200",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Арахисовая паста",
+        "teaspoon": "12",
+        "tablespoon": "35",
+        "glass200": "210",
+        "glass250": "260",
+        "piece": "--"
+    },
+    {
+        "product": "Банан",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "220"
+    },
+    {
+        "product": "Блины",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "50"
+    },
+    {
+        "product": "Боярышник сухой",
+        "teaspoon": 6.5,
+        "tablespoon": "23",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Булгур",
+        "teaspoon": "8",
+        "tablespoon": "21",
+        "glass200": "190",
+        "glass250": "235",
+        "piece": "--"
+    },
+    {
+        "product": "Бульон",
+        "teaspoon": "5",
+        "tablespoon": "18",
+        "glass200": "200",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Ванилин",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "180",
+        "glass250": "200",
+        "piece": "--"
+    },
+    {
+        "product": "Ваниль",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "180",
+        "glass250": "200",
+        "piece": "--"
+    },
+    {
+        "product": "Ванильный сахар",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "180",
+        "glass250": "200",
+        "piece": "--"
+    },
+    {
+        "product": "Варенье",
+        "teaspoon": "20",
+        "tablespoon": "45",
+        "glass200": "280",
+        "glass250": "320",
+        "piece": "--"
+    },
+    {
+        "product": "Вермишель",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "190",
+        "glass250": "230",
+        "piece": "--"
+    },
+    {
+        "product": "Вино",
+        "teaspoon": "5",
+        "tablespoon": "18",
+        "glass200": "200",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Вишня",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "130",
+        "glass250": "165",
+        "piece": "--"
+    },
+    {
+        "product": "Вода",
+        "teaspoon": "5",
+        "tablespoon": "18",
+        "glass200": "200",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Водка",
+        "teaspoon": "5",
+        "tablespoon": "18",
+        "glass200": "200",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Гвоздика сухая",
+        "teaspoon": "3",
+        "tablespoon": "20",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Горох",
+        "teaspoon": "5",
+        "tablespoon": "25",
+        "glass200": "205",
+        "glass250": "230",
+        "piece": "--"
+    },
+    {
+        "product": "Горчица",
+        "teaspoon": "5",
+        "tablespoon": "20",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Гранат",
+        "teaspoon": "5",
+        "tablespoon": "15",
+        "glass200": "150",
+        "glass250": "--",
+        "piece": "250"
+    },
+    {
+        "product": "Греческий йогурт",
+        "teaspoon": "10",
+        "tablespoon": "25",
+        "glass200": "210",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Грибы",
+        "teaspoon": "3",
+        "tablespoon": "10",
+        "glass200": "70",
+        "glass250": "100",
+        "piece": "--"
+    },
+    {
+        "product": "Дрожжи прессованные",
+        "teaspoon": "9",
+        "tablespoon": "22",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Желатин в гранулах",
+        "teaspoon": "5",
+        "tablespoon": "15",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Желе",
+        "teaspoon": "20",
+        "tablespoon": "45",
+        "glass200": "280",
+        "glass250": "320",
+        "piece": "--"
+    },
+    {
+        "product": "Жир столовый",
+        "teaspoon": "3",
+        "tablespoon": "17",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Закваска",
+        "teaspoon": "6",
+        "tablespoon": "19",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Земляника",
+        "teaspoon": "6",
+        "tablespoon": "22",
+        "glass200": "125",
+        "glass250": "155",
+        "piece": "32"
+    },
+    {
+        "product": "Зира",
+        "teaspoon": 4.5,
+        "tablespoon": "18",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Изюм",
+        "teaspoon": "4",
+        "tablespoon": "10",
+        "glass200": "155",
+        "glass250": "190",
+        "piece": "--"
+    },
+    {
+        "product": "Икра красная",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "170",
+        "glass250": "220",
+        "piece": "--"
+    },
+    {
+        "product": "Икра черная",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "180",
+        "glass250": "230",
+        "piece": "--"
+    },
+    {
+        "product": "Имбирь сухой",
+        "teaspoon": "3",
+        "tablespoon": "7",
+        "glass200": "110",
+        "glass250": "170",
+        "piece": "--"
+    },
+    {
+        "product": "Йогурт",
+        "teaspoon": "6",
+        "tablespoon": "18",
+        "glass200": "200",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Кабачковая икра",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "250",
+        "glass250": "300",
+        "piece": "--"
+    },
+    {
+        "product": "Кабачок",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "600"
+    },
+    {
+        "product": "Какао",
+        "teaspoon": "9",
+        "tablespoon": "25",
+        "glass200": "170",
+        "glass250": "200",
+        "piece": "--"
+    },
+    {
+        "product": "Калина",
+        "teaspoon": "6",
+        "tablespoon": "23",
+        "glass200": "120",
+        "glass250": "150",
+        "piece": "--"
+    },
+    {
+        "product": "Капуста",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "1500"
+    },
+    {
+        "product": "Кардамон молотый",
+        "teaspoon": "3",
+        "tablespoon": "7",
+        "glass200": "110",
+        "glass250": "170",
+        "piece": "--"
+    },
+    {
+        "product": "Картофель",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "100"
+    },
+    {
+        "product": "Картофельное пюре",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "250",
+        "glass250": "300",
+        "piece": "--"
+    },
+    {
+        "product": "Кедровые орехи",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "130",
+        "glass250": "170",
+        "piece": "--"
+    },
+    {
+        "product": "Кетчуп",
+        "teaspoon": "7",
+        "tablespoon": "22",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Кефир",
+        "teaspoon": "8",
+        "tablespoon": "20",
+        "glass200": "205",
+        "glass250": "255",
+        "piece": "--"
+    },
+    {
+        "product": "Киноа",
+        "teaspoon": "8",
+        "tablespoon": "20",
+        "glass200": "170",
+        "glass250": "220",
+        "piece": "--"
+    },
+    {
+        "product": "Клубника",
+        "teaspoon": "6",
+        "tablespoon": "22",
+        "glass200": "125",
+        "glass250": "155",
+        "piece": "37"
+    },
+    {
+        "product": "Клюква",
+        "teaspoon": "7",
+        "tablespoon": "22",
+        "glass200": "115",
+        "glass250": "145",
+        "piece": "--"
+    },
+    {
+        "product": "Клюквенный морс",
+        "teaspoon": "5",
+        "tablespoon": "18",
+        "glass200": "200",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Кокосовая стружка",
+        "teaspoon": "7",
+        "tablespoon": "20",
+        "glass200": "140",
+        "glass250": "190",
+        "piece": "--"
+    },
+    {
+        "product": "Кокосовое масло",
+        "teaspoon": "5",
+        "tablespoon": "16",
+        "glass200": "180",
+        "glass250": "225",
+        "piece": "--"
+    },
+    {
+        "product": "Кокосовое молоко",
+        "teaspoon": "5",
+        "tablespoon": "20",
+        "glass200": "200",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Консервированная кукуруза",
+        "teaspoon": "8",
+        "tablespoon": "28",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Консервированный горошек",
+        "teaspoon": "17",
+        "tablespoon": "22",
+        "glass200": "150",
+        "glass250": "210",
+        "piece": "--"
+    },
+    {
+        "product": "Коньяк",
+        "teaspoon": "5",
+        "tablespoon": "18",
+        "glass200": "200",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Кориандр",
+        "teaspoon": "3",
+        "tablespoon": "7",
+        "glass200": "110",
+        "glass250": "170",
+        "piece": "--"
+    },
+    {
+        "product": "Корица молотая",
+        "teaspoon": "3",
+        "tablespoon": "9",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Кофе зерновой",
+        "teaspoon": "4",
+        "tablespoon": "12",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Кофе молотый",
+        "teaspoon": "7",
+        "tablespoon": "20",
+        "glass200": "180",
+        "glass250": "210",
+        "piece": "--"
+    },
+    {
+        "product": "Кофе растворимый",
+        "teaspoon": "3",
+        "tablespoon": "7",
+        "glass200": "90",
+        "glass250": "120",
+        "piece": "--"
+    },
+    {
+        "product": "Красная смородина",
+        "teaspoon": "9",
+        "tablespoon": "27",
+        "glass200": "140",
+        "glass250": "175",
+        "piece": "--"
+    },
+    {
+        "product": "Крахмал",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "150",
+        "glass250": "180",
+        "piece": "--"
+    },
+    {
+        "product": "Крупа греченевая",
+        "teaspoon": "7",
+        "tablespoon": "25",
+        "glass200": "165",
+        "glass250": "210",
+        "piece": "--"
+    },
+    {
+        "product": "Крупа кукурузная",
+        "teaspoon": "5",
+        "tablespoon": "20",
+        "glass200": "145",
+        "glass250": "180",
+        "piece": "--"
+    },
+    {
+        "product": "Крупа манная",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "160",
+        "glass250": "200",
+        "piece": "--"
+    },
+    {
+        "product": "Крупа пшенная",
+        "teaspoon": "8",
+        "tablespoon": "20",
+        "glass200": "170",
+        "glass250": "220",
+        "piece": "--"
+    },
+    {
+        "product": "Крупа ячневая",
+        "teaspoon": "5",
+        "tablespoon": "16",
+        "glass200": "145",
+        "glass250": "180",
+        "piece": "--"
+    },
+    {
+        "product": "Кукуруза",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "300"
+    },
+    {
+        "product": "Кунжутное масло",
+        "teaspoon": "4",
+        "tablespoon": "15",
+        "glass200": "190",
+        "glass250": "230",
+        "piece": "--"
+    },
+    {
+        "product": "Курага",
+        "teaspoon": "10",
+        "tablespoon": "20",
+        "glass200": "150",
+        "glass250": "210",
+        "piece": "6"
+    },
+    {
+        "product": "Куриный бульон",
+        "teaspoon": "10",
+        "tablespoon": "18",
+        "glass200": "210",
+        "glass250": "270",
+        "piece": "--"
+    },
+    {
+        "product": "Куркума",
+        "teaspoon": "3",
+        "tablespoon": "7",
+        "glass200": "110",
+        "glass250": "170",
+        "piece": "--"
+    },
+    {
+        "product": "Кускус",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "180",
+        "glass250": "220",
+        "piece": "--"
+    },
+    {
+        "product": "Лимон",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "120"
+    },
+    {
+        "product": "Лимонная кислота сухая",
+        "teaspoon": "7",
+        "tablespoon": "20",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Лимонный сок",
+        "teaspoon": "5",
+        "tablespoon": "15",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Лук",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "140"
+    },
+    {
+        "product": "Майонез",
+        "teaspoon": "10",
+        "tablespoon": "25",
+        "glass200": "210",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Мак",
+        "teaspoon": "15",
+        "tablespoon": "45",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Макароны",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "190",
+        "glass250": "230",
+        "piece": "--"
+    },
+    {
+        "product": "Малина",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "145",
+        "glass250": "180",
+        "piece": "--"
+    },
+    {
+        "product": "Мандарин",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "70"
+    },
+    {
+        "product": "Маргарин столовый",
+        "teaspoon": "4",
+        "tablespoon": "14",
+        "glass200": "180",
+        "glass250": "230",
+        "piece": "--"
+    },
+    {
+        "product": "Масло льняное",
+        "teaspoon": "4",
+        "tablespoon": "15",
+        "glass200": "190",
+        "glass250": "230",
+        "piece": "--"
+    },
+    {
+        "product": "Масло оливковое",
+        "teaspoon": "5",
+        "tablespoon": "17",
+        "glass200": "190",
+        "glass250": "230",
+        "piece": "--"
+    },
+    {
+        "product": "Маш",
+        "teaspoon": "9",
+        "tablespoon": "25",
+        "glass200": "175",
+        "glass250": "230",
+        "piece": "--"
+    },
+    {
+        "product": "Мед",
+        "teaspoon": "12",
+        "tablespoon": "35",
+        "glass200": "265",
+        "glass250": "325",
+        "piece": "--"
+    },
+    {
+        "product": "Молоко сгущеное",
+        "teaspoon": "12",
+        "tablespoon": "30",
+        "glass200": "250",
+        "glass250": "300",
+        "piece": "--"
+    },
+    {
+        "product": "Молоко сухое",
+        "teaspoon": "7",
+        "tablespoon": "20",
+        "glass200": "110",
+        "glass250": "130",
+        "piece": "--"
+    },
+    {
+        "product": "Молоко цельное",
+        "teaspoon": "5",
+        "tablespoon": "20",
+        "glass200": "200",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Молотый имбирь",
+        "teaspoon": "3",
+        "tablespoon": "7",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Морковный сок",
+        "teaspoon": "5",
+        "tablespoon": "18",
+        "glass200": "200",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Морковь",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "100"
+    },
+    {
+        "product": "Морская соль",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "220",
+        "glass250": "320",
+        "piece": "--"
+    },
+    {
+        "product": "Мука",
+        "teaspoon": "6",
+        "tablespoon": "15",
+        "glass200": "130",
+        "glass250": "160",
+        "piece": "--"
+    },
+    {
+        "product": "Мука гречневая",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "130",
+        "glass250": "160",
+        "piece": "--"
+    },
+    {
+        "product": "Мука кокосовая",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "130",
+        "glass250": "160",
+        "piece": "--"
+    },
+    {
+        "product": "Мука кукурузная",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "140",
+        "glass250": "170",
+        "piece": "--"
+    },
+    {
+        "product": "Мука льняная",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "130",
+        "glass250": "160",
+        "piece": "--"
+    },
+    {
+        "product": "Мука миндальная",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "140",
+        "glass250": "170",
+        "piece": "--"
+    },
+    {
+        "product": "Мука овсяная",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "130",
+        "glass250": "160",
+        "piece": "--"
+    },
+    {
+        "product": "Мука пшеничная",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "130",
+        "glass250": "160",
+        "piece": "--"
+    },
+    {
+        "product": "Мука ржаная",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "130",
+        "glass250": "160",
+        "piece": "--"
+    },
+    {
+        "product": "Мука рисовая",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "140",
+        "glass250": "170",
+        "piece": "--"
+    },
+    {
+        "product": "Мюсли",
+        "teaspoon": "7",
+        "tablespoon": "25",
+        "glass200": "180",
+        "glass250": "230",
+        "piece": "--"
+    },
+    {
+        "product": "Мята",
+        "teaspoon": "3",
+        "tablespoon": "8",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Нитритная соль",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "220",
+        "glass250": "320",
+        "piece": "--"
+    },
+    {
+        "product": "Нут",
+        "teaspoon": "7",
+        "tablespoon": "22",
+        "glass200": "170",
+        "glass250": "210",
+        "piece": "--"
+    },
+    {
+        "product": "Нутелла",
+        "teaspoon": "8",
+        "tablespoon": "22",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Нутовая мука",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "140",
+        "glass250": "170",
+        "piece": "--"
+    },
+    {
+        "product": "Облепиха",
+        "teaspoon": "6",
+        "tablespoon": "22",
+        "glass200": "125",
+        "glass250": "155",
+        "piece": "--"
+    },
+    {
+        "product": "Облепиховое масло",
+        "teaspoon": "4",
+        "tablespoon": "15",
+        "glass200": "190",
+        "glass250": "230",
+        "piece": "--"
+    },
+    {
+        "product": "Овес",
+        "teaspoon": "4",
+        "tablespoon": "14",
+        "glass200": "80",
+        "glass250": "100",
+        "piece": "--"
+    },
+    {
+        "product": "Овсянка",
+        "teaspoon": "4",
+        "tablespoon": "14",
+        "glass200": "80",
+        "glass250": "100",
+        "piece": "--"
+    },
+    {
+        "product": "Овсяные отруби",
+        "teaspoon": 1.5,
+        "tablespoon": "5",
+        "glass200": "45",
+        "glass250": "65",
+        "piece": "--"
+    },
+    {
+        "product": "Огурец",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "120"
+    },
+    {
+        "product": "Оливки",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "4"
+    },
+    {
+        "product": "Орех арахис",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "140",
+        "glass250": "175",
+        "piece": "--"
+    },
+    {
+        "product": "Орех миндальный",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "130",
+        "glass250": "160",
+        "piece": "--"
+    },
+    {
+        "product": "Орех мускатный",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "130",
+        "glass250": "170",
+        "piece": "--"
+    },
+    {
+        "product": "Орехи грецкие",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "130",
+        "glass250": "170",
+        "piece": "--"
+    },
+    {
+        "product": "Орехи толченые",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "130",
+        "glass250": "170",
+        "piece": "--"
+    },
+    {
+        "product": "Отруби",
+        "teaspoon": "5",
+        "tablespoon": "15",
+        "glass200": "160",
+        "glass250": "180",
+        "piece": "--"
+    },
+    {
+        "product": "Палочка корицы",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "5"
+    },
+    {
+        "product": "Панировочные сухари",
+        "teaspoon": "5",
+        "tablespoon": "15",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Паприка молотая",
+        "teaspoon": "5",
+        "tablespoon": "18",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Паштет",
+        "teaspoon": 4.5,
+        "tablespoon": "13",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Пектин",
+        "teaspoon": "5",
+        "tablespoon": "15",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Перга",
+        "teaspoon": "5",
+        "tablespoon": "15",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Перец молотый",
+        "teaspoon": "5",
+        "tablespoon": "18",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Печень трески",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "1650"
+    },
+    {
+        "product": "Пиво",
+        "teaspoon": "5",
+        "tablespoon": "18",
+        "glass200": "200",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Повидло",
+        "teaspoon": "20",
+        "tablespoon": "45",
+        "glass200": "280",
+        "glass250": "320",
+        "piece": "--"
+    },
+    {
+        "product": "Помидор",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "90"
+    },
+    {
+        "product": "Прополис",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "220",
+        "glass250": "320",
+        "piece": "--"
+    },
+    {
+        "product": "Протеин",
+        "teaspoon": "10",
+        "tablespoon": "20",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Псиллиум",
+        "teaspoon": "3",
+        "tablespoon": "7",
+        "glass200": "110",
+        "glass250": "170",
+        "piece": "--"
+    },
+    {
+        "product": "Пшеничные отруби",
+        "teaspoon": "5",
+        "tablespoon": "15",
+        "glass200": "160",
+        "glass250": "180",
+        "piece": "--"
+    },
+    {
+        "product": "Пшено",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "130",
+        "glass250": "160",
+        "piece": "--"
+    },
+    {
+        "product": "Разрыхлитель теста",
+        "teaspoon": "3",
+        "tablespoon": "9",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Рассол",
+        "teaspoon": "5",
+        "tablespoon": "18",
+        "glass200": "200",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Растительное масло",
+        "teaspoon": "5",
+        "tablespoon": "17",
+        "glass200": "190",
+        "glass250": "230",
+        "piece": "--"
+    },
+    {
+        "product": "Рис",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "180",
+        "glass250": "230",
+        "piece": "--"
+    },
+    {
+        "product": "Ромашка",
+        "teaspoon": 1.5,
+        "tablespoon": "3",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Ряженка",
+        "teaspoon": "10",
+        "tablespoon": "25",
+        "glass200": "210",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Сахар",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "180",
+        "glass250": "200",
+        "piece": "--"
+    },
+    {
+        "product": "Сахарная пудра",
+        "teaspoon": "10",
+        "tablespoon": "25",
+        "glass200": "140",
+        "glass250": "180",
+        "piece": "--"
+    },
+    {
+        "product": "Сахарозаменитель",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Свежие дрожжи",
+        "teaspoon": "9",
+        "tablespoon": "22",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Свекла",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "250"
+    },
+    {
+        "product": "Семена льна",
+        "teaspoon": "3",
+        "tablespoon": "7",
+        "glass200": "110",
+        "glass250": "170",
+        "piece": "--"
+    },
+    {
+        "product": "Семена укропа",
+        "teaspoon": "3",
+        "tablespoon": "8",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Семена чиа",
+        "teaspoon": "4",
+        "tablespoon": "12",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Сироп",
+        "teaspoon": "5",
+        "tablespoon": "15",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Слива",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "35"
+    },
+    {
+        "product": "Сливки",
+        "teaspoon": "5",
+        "tablespoon": "15",
+        "glass200": "200",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Сливочное масло",
+        "teaspoon": "8",
+        "tablespoon": "20",
+        "glass200": "185",
+        "glass250": "240",
+        "piece": "--"
+    },
+    {
+        "product": "Сметана",
+        "teaspoon": "10",
+        "tablespoon": "25",
+        "glass200": "210",
+        "glass250": "260",
+        "piece": "--"
+    },
+    {
+        "product": "Смородина",
+        "teaspoon": "6",
+        "tablespoon": "22",
+        "glass200": "125",
+        "glass250": "155",
+        "piece": "--"
+    },
+    {
+        "product": "Смородина белая",
+        "teaspoon": "6",
+        "tablespoon": "22",
+        "glass200": "125",
+        "glass250": "155",
+        "piece": "--"
+    },
+    {
+        "product": "Сода",
+        "teaspoon": "13",
+        "tablespoon": "28",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Соевый соус",
+        "teaspoon": "5",
+        "tablespoon": "15",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Солод",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Соль",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "220",
+        "glass250": "320",
+        "piece": "--"
+    },
+    {
+        "product": "Соль крупного помола",
+        "teaspoon": "10",
+        "tablespoon": "18",
+        "glass200": "270",
+        "glass250": "325",
+        "piece": "--"
+    },
+    {
+        "product": "Соус терияки",
+        "teaspoon": "5",
+        "tablespoon": "15",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Спагетти",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "190",
+        "glass250": "230",
+        "piece": "--"
+    },
+    {
+        "product": "Специи",
+        "teaspoon": "8",
+        "tablespoon": "20",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Спирт",
+        "teaspoon": "5",
+        "tablespoon": "18",
+        "glass200": "200",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Стевия",
+        "teaspoon": "5",
+        "tablespoon": "15",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Сухари",
+        "teaspoon": "5",
+        "tablespoon": "15",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Сухие дрожжи",
+        "teaspoon": "3",
+        "tablespoon": "9",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Сухие сливки",
+        "teaspoon": 6.5,
+        "tablespoon": "18",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Сухой кисель",
+        "teaspoon": 6.5,
+        "tablespoon": "20",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Сушеные травы",
+        "teaspoon": 5.5,
+        "tablespoon": "20",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Сушеный чеснок",
+        "teaspoon": "3",
+        "tablespoon": "12",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Сыр тертый",
+        "teaspoon": "5",
+        "tablespoon": "20",
+        "glass200": "80",
+        "glass250": "100",
+        "piece": "--"
+    },
+    {
+        "product": "Творог",
+        "teaspoon": "5",
+        "tablespoon": "17",
+        "glass200": "200",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Тесто",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "140",
+        "glass250": "180",
+        "piece": "--"
+    },
+    {
+        "product": "Тмин",
+        "teaspoon": "3",
+        "tablespoon": "7",
+        "glass200": "110",
+        "glass250": "170",
+        "piece": "--"
+    },
+    {
+        "product": "Томатная паста",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "250",
+        "glass250": "300",
+        "piece": "--"
+    },
+    {
+        "product": "Томатный сок",
+        "teaspoon": "5",
+        "tablespoon": "18",
+        "glass200": "200",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Томатный соус",
+        "teaspoon": "5",
+        "tablespoon": "15",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Топленое масло",
+        "teaspoon": "5",
+        "tablespoon": "16",
+        "glass200": "180",
+        "glass250": "225",
+        "piece": "--"
+    },
+    {
+        "product": "Тыквенное масло",
+        "teaspoon": "4",
+        "tablespoon": "15",
+        "glass200": "190",
+        "glass250": "230",
+        "piece": "--"
+    },
+    {
+        "product": "Тыквенное пюре",
+        "teaspoon": "10",
+        "tablespoon": "30",
+        "glass200": "250",
+        "glass250": "300",
+        "piece": "--"
+    },
+    {
+        "product": "Тыквенные семечки",
+        "teaspoon": "3",
+        "tablespoon": "9",
+        "glass200": "100",
+        "glass250": "125",
+        "piece": "--"
+    },
+    {
+        "product": "Тыквенный сок",
+        "teaspoon": "5",
+        "tablespoon": "18",
+        "glass200": "200",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Укроп",
+        "teaspoon": "3",
+        "tablespoon": "8",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Уксус",
+        "teaspoon": "5",
+        "tablespoon": "15",
+        "glass200": "200",
+        "glass250": "250",
+        "piece": "--"
+    },
+    {
+        "product": "Уксусная эссенция",
+        "teaspoon": "5",
+        "tablespoon": "15",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Фасоль",
+        "teaspoon": "4",
+        "tablespoon": "15",
+        "glass200": "150",
+        "glass250": "190",
+        "piece": "--"
+    },
+    {
+        "product": "Фейхоа",
+        "teaspoon": "10",
+        "tablespoon": "20",
+        "glass200": "150",
+        "glass250": "210",
+        "piece": "55"
+    },
+    {
+        "product": "Фруктоза",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Халва",
+        "teaspoon": 6.5,
+        "tablespoon": 22.5,
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Хлопья кукурузные",
+        "teaspoon": "6",
+        "tablespoon": "22",
+        "glass200": "125",
+        "glass250": "155",
+        "piece": "--"
+    },
+    {
+        "product": "Хлопья овсяные",
+        "teaspoon": "4",
+        "tablespoon": "14",
+        "glass200": "80",
+        "glass250": "100",
+        "piece": "--"
+    },
+    {
+        "product": "Хмели-сунели",
+        "teaspoon": "4",
+        "tablespoon": "20",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Хмель",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Хрен тертый",
+        "teaspoon": "6",
+        "tablespoon": "25",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Цикорий",
+        "teaspoon": "3",
+        "tablespoon": "9",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Чабрец",
+        "teaspoon": "5",
+        "tablespoon": "18",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Чай",
+        "teaspoon": "3",
+        "tablespoon": "8",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Черная смородина",
+        "teaspoon": "6",
+        "tablespoon": "22",
+        "glass200": "125",
+        "glass250": "155",
+        "piece": "--"
+    },
+    {
+        "product": "Черника",
+        "teaspoon": "5",
+        "tablespoon": "20",
+        "glass200": "160",
+        "glass250": "200",
+        "piece": "--"
+    },
+    {
+        "product": "Чернослив",
+        "teaspoon": "10",
+        "tablespoon": "20",
+        "glass200": "150",
+        "glass250": "210",
+        "piece": "45"
+    },
+    {
+        "product": "Черный перец молотый",
+        "teaspoon": "5",
+        "tablespoon": "18",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Чеснок",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "40"
+    },
+    {
+        "product": "Чечевица",
+        "teaspoon": "4",
+        "tablespoon": "12",
+        "glass200": "160",
+        "glass250": "180",
+        "piece": "--"
+    },
+    {
+        "product": "Шиповник",
+        "teaspoon": "6",
+        "tablespoon": "20",
+        "glass200": "115",
+        "glass250": "145",
+        "piece": "--"
+    },
+    {
+        "product": "Шоколад",
+        "teaspoon": 2.5,
+        "tablespoon": 7.5,
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Эритрит",
+        "teaspoon": "8",
+        "tablespoon": "25",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "--"
+    },
+    {
+        "product": "Яблоко",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "150"
+    },
+    {
+        "product": "Яблочное пюре",
+        "teaspoon": "17",
+        "tablespoon": "50",
+        "glass200": "290",
+        "glass250": "350",
+        "piece": "--"
+    },
+    {
+        "product": "Яичный порошок",
+        "teaspoon": "10",
+        "tablespoon": "25",
+        "glass200": "80",
+        "glass250": "100",
+        "piece": "--"
+    },
+    {
+        "product": "Яйцо куриное",
+        "teaspoon": "--",
+        "tablespoon": "--",
+        "glass200": "--",
+        "glass250": "--",
+        "piece": "55"
+    }
+]

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid;
 
+use App\Models\Recipe;
 use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemPermission;
 use Orchid\Platform\OrchidServiceProvider;
@@ -24,6 +25,7 @@ class PlatformProvider extends OrchidServiceProvider
         parent::boot($dashboard);
 
         // ...
+       // $count=
     }
 
     /**
@@ -42,7 +44,10 @@ class PlatformProvider extends OrchidServiceProvider
 
             Menu::make('Рецепты')
                 ->icon('bs.book')
-                ->route('platform.recipes'),
+                ->route('platform.recipes')
+                ->badge(function () {
+                    return Recipe::whereNull('edit_id')->count();
+                }),
 
             Menu::make('Комментарии')
                 ->icon('bs.chat-left-text')

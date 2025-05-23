@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
-use Str;
+use Illuminate\Support\Str;
+
 
 class UserController extends Controller
 {
@@ -55,11 +57,12 @@ class UserController extends Controller
         //  return view('user.login');
     }
 
-    public function logout()
+    public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
-
-        return redirect()->route('login');
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 
     public function dashboard()
@@ -75,20 +78,19 @@ class UserController extends Controller
     public function yandexCallback() // принимаем возвращаемые данные и работаем с ними
     {
         $user = Socialite::driver('yandex')->user();
-
-        $user = User::firstOrCreate([ // используем firstOrCreate для проверки есть ли такие пользователи в нашей БД
-            'email' => $user->email,
-        ], [
-            'name' => $user->user['display_name'], // display_name - переменаая хранящая полное ФИО пользователя
-
-            'password' => Hash::make(Str::random(24)),
-        ]);
-
+        // используем firstOrCreate для проверки есть ли такие пользователи в нашей БД
+        $user = User::firstOrCreate(
+            ['email' => $user->email,],
+            [
+                'name' => $user->user['display_name'], // display_name - переменаая хранящая полное ФИО пользователя
+                'password' => Hash::make(Str::random(24)),
+            ]
+        );
+        // dd($user);
         Auth::login($user, true);
         if (Auth::check()) {
             return redirect()->intended('fav')->with('msg_success', value: 'Добро пожаловать '.Auth::user()->name.'!');
         }
-       // dd($user);
     }
 
     public function telegram()
@@ -100,8 +102,22 @@ class UserController extends Controller
 
     public function telegramCallback()
     {
-        return 'hello telegramm';
-        // $user = Socialite::driver('telegram')->user();
-        // dd('$user');
+        $user = Socialite::driver('telegram')->user();
+
+        // используем firstOrCreate для проверки есть ли такие пользователи в нашей БД
+        $user = User::firstOrCreate(
+            ['email' => $user->id.'@telegram.user'],
+            [
+                'name' => $user->user['first_name'], // display_name - переменаая хранящая полное ФИО пользователя
+                'password' => Hash::make(Str::random(24)),
+            ]
+        );
+        //dd($user);
+        Auth::login($user, true);
+        if (Auth::check()) {
+            return redirect()->intended('fav')->with('msg_success', value: 'Добро пожаловать '.Auth::user()->name.'!');
+        }
+
     }
+
 }

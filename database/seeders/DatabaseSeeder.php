@@ -72,6 +72,7 @@ class DatabaseSeeder extends Seeder
             //   DB::table('recipes')->insert([
             Recipe::create([
                 'user_id' => rand(1, 2),
+                'edit_id' => rand(1, 2),
                 'category_id' => (int) $recipe->category_id,
                 'title' => (string) $recipe->title,
                 'description' => (string) trim($recipe->description),

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->bigInteger('user_id')->unsigned(); //Автор рецепта
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('edit_id')->nullable(); //Модератор рецепта
             $table->string('title')->unique(); //Название рецепта
             $table->text('description')->nullable(); //Описание рецепта
             $table->mediumText('text'); //Приготовление рецепта

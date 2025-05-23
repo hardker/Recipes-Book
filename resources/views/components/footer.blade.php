@@ -1,33 +1,12 @@
-<footer>
-<div class="inf">
-        {{-- <div class="inf2">
-            <div class="footer-text">Войдите, чтобы сохранить рецепт</div>
-            <hr>
-            <div class="footer-text-small">С личным кабинетом сохраняйте рецепты</div>
-        </div> --}}
-        <div class="inf1">
-            <div class="footer-text">Оставайтесь на связи</div>
-            <hr>
-            <div class="footer-text">8(800)555-3-***</div>
-            <div class="footer-text-small">Следите за новинками</div>
-                <div class="email-box">
-                    <input class="email-input" placeholder="Введите email и подпишитесь">
-                    <div class="email-button">
-                        {{-- <img src="/img/buttons/enter.svg" class="img-email" widht="40" height="40"> --}}
-                    </div>
-                </div>
-                <div class="seti">
-                    {{-- <img src="/img/buttons/telegram.svg" widht="50" height="50">
-                    <img src="/img/buttons/whatsapp.svg" widht="50" height="50">
-                    <img src="/img/buttons/vk.svg" widht="50" height="50"> --}}
-                </div>
-            </div>
-            <div class="inf2">
-                <div class="footer-text">Узнайте! Что сегодня приготовить?</div>
-                <hr>
-                <div class="footer-text-small">Переходите в каталоги</div>
-
-            </div>
-        </div>
-    
-        </footer>
+<footer class="d-flex justify-content-start align-items-center py-3 my-4 border-top">
+    <p class="col-md-4 mb-0 text-body-secondary">© 2025
+        <a href="/"class="text-decoration-none link-body-emphasis">моя-книга-рецептов.рф</a>
+    </p>
+    <p class="col-md-4 text-body-secondary">Доверяем хостингу
+        <a href="https://lite.host/">
+            <img width="186" height="14" src="https://lite.host/assets/images/logo_dark_background_13v.svg">
+        </a>
+    </p>
+    <p class="col-md-4 justify-content-end text-body-secondary">Версия #{{env('APP_VERSION')}}
+    </p>
+</footer>

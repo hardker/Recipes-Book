@@ -6,10 +6,12 @@ namespace App\Orchid\Screens\Recipe;
 
 use App\Orchid\Layouts\Recipe\RecipeListLayout;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Recipe;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Toast;
+
 
 class RecipeListScreen extends Screen
 {
@@ -24,7 +26,9 @@ class RecipeListScreen extends Screen
             'recipes' => Recipe::with('category')
                 ->with('user')->withTrashed()
                 ->withAvg('comments', 'rating')->filters()
-                ->defaultSort('id', 'desc')->paginate(),
+                ->defaultSort('id', 'desc')->paginate()
+            //->dump()
+
             // 'recipes' => Recipe::filters(RecipeFiltersLayout::class)->defaultSort('id', 'desc')->paginate(),
         ];
     }
@@ -42,7 +46,7 @@ class RecipeListScreen extends Screen
      */
     public function description(): ?string
     {
-        return 'Полный список всех рецептов, включая удаленные.  С возможностью сортировки и фильтрации данных.';
+        return 'Полный список всех рецептов, включая удаленные и неопубликованные.  С возможностью сортировки и фильтрации данных. ';
     }
 
     public function permission(): ?iterable
@@ -89,10 +93,27 @@ class RecipeListScreen extends Screen
      *
      * @return array
      */
-   
+
     public function remove(Request $request): void
     {
         Recipe::findOrFail($request->get('id'))->delete();
         Toast::info('Рецепт успешно удален');
+    }
+    public function recover(Request $request): void
+    {
+        Recipe::withTrashed()->find($request->get('id'))->restore();
+        Toast::info('Рецепт успешно восстановлен');
+    }
+    public function enable(Request $request): void
+    {
+        //dd($request);
+        Recipe::findOrFail($request->get('id'))->update (['edit_id' => Auth::id()]);
+        Toast::info('Рецепт успешно опубликован');
+    }
+    public function disable(Request $request): void
+    {
+        //dd($request);
+        Recipe::findOrFail($request->get('id'))->update (['edit_id' => null]);
+        Toast::info('Рецепт успешно снят с публикации');
     }
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+//use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use Orchid\Filters\Filterable;
@@ -48,8 +48,8 @@ class Category extends Model
         return $this->hasMany(Recipe::class);
     }
 
-    public function likes(): HasManyThrough
-    {
-        return $this->hasManyThrough(Like::class, Recipe::class);
-    }
+    // public function likes(): HasManyThrough
+    // {
+    //     return $this->hasManyThrough(Like::class, Recipe::class);
+    // }
 }

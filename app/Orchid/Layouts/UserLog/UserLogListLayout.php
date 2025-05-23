@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid\Layouts\UserLog;
 
-use App\Models\Userlog;
+use App\Models\UserLog;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Components\Cells\DateTimeSplit;
@@ -12,7 +12,7 @@ use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 
 
-class UserlogListLayout extends Table
+class UserLogListLayout extends Table
 {
     /**
      * @var string

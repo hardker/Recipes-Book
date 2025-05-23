@@ -22,9 +22,10 @@ class Recipe extends Model
     use SoftDeletes; //Программное удаление
     use AsSource, Filterable, Chartable;
 
-      protected $fillable = [
+    protected $fillable = [
         'category_id',
         'user_id',
+        'edit_id',
         'title',
         'text',
         'ingredients',
@@ -41,13 +42,14 @@ class Recipe extends Model
         'deleted_at' => WhereDateStartEnd::class,
         'updated_at' => WhereDateStartEnd::class,
         'created_at' => WhereDateStartEnd::class,
-        ];
+    ];
 
-     protected $allowedSorts = [
+    protected $allowedSorts = [
         'id',
         'title',
         'slug',
         'user_id',
+        'edit_id',
         'category_id',
         'deleted_at',
         'updated_at',
@@ -72,8 +74,19 @@ class Recipe extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function averageRating()
+    // public function averageRating()
+    // {
+    //     return $this->comments()->avg('rating');
+    // }
+    public function editor()
     {
-        return $this->comments()->avg('rating');
+        return $this->belongsTo(User::class, 'edit_id');
     }
+    /**
+     * Разрешить публикацию рецепта
+     */
+    // public function enable() {
+    //     $this->edit_id = auth()->user()->id;
+    //     $this->update();
+    // }
 }
