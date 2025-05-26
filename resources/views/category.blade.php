@@ -16,6 +16,8 @@
                     <li><a class="dropdown-item"
                             href="{{ route('search', ['query' => $query, 'sort' => 'category_id', 'flag' => 'asc']) }}">категориям</a></li>
                     <li><a class="dropdown-item"
+                            href="{{ route('search', ['query' => $query, 'sort' => 'calorie', 'flag' => 'asc']) }}">калорийности</a></li>
+                    <li><a class="dropdown-item"
                             href="{{ route('search', ['query' => $query, 'sort' => 'comments_avg_rating', 'flag' => 'desc']) }}">рейтингу</a>
                     </li>
                 </ul>
