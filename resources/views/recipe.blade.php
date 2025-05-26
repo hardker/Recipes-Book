@@ -46,13 +46,13 @@
         }
 
         /*
-                                                                                                    .rating-container .form-control:hover,
-                                                                                                    .rating-container .form-control:focus
-                                                                                                    {background: #fff; border: 1px solid #ced4da;}
+                                                                                                                        .rating-container .form-control:hover,
+                                                                                                                        .rating-container .form-control:focus
+                                                                                                                        {background: #fff; border: 1px solid #ced4da;}
 
-                                                                                                    .rating-container textarea:focus,
-                                                                                                    .rating-container input:focus
-                                                                                                    { color: #000; }    */
+                                                                                                                        .rating-container textarea:focus,
+                                                                                                                        .rating-container input:focus
+                                                                                                                        { color: #000; }    */
     </style>
 @endsection
 
@@ -102,7 +102,6 @@
                         <p class="text-secondary">Всего рецептов у автора: {{ $avtor_count }}.
                             <a href="{{ $url = route('avtor', ['id' => $avtor->id, 'avtor' => $avtor->name]) }}" title="Перейти">Посмотреть все</a>
                         </p>
-                        {{-- Если пользователь автор или админ, то добавляем кнопки редактировать и удалить --}}
                         <br>
                         <!-- Избранное -->
                         <div class=" whitespace-nowrap flex justify-between w-max gap-5">
@@ -119,15 +118,19 @@
                                         Убрать из избранного
                                     </a>
                                 @endif
-                                <a href="{{ route('recipe.edit', ['slug' => $recipe->slug]) }}" class="btn btn-outline-success">
-                                    <i width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"></i>
-                                    Редактировать рецепт
-                                </a>
-                                <a href="{{ route('recipe.del', ['slug' => $recipe->slug]) }}" class="btn btn-outline-danger">
-                                    <i width="16" height="16" fill="currentColor" class="bi bi-journal-x" viewBox="0 0 16 16"></i>
-                                    Удалить рецепт
-                                </a>
+                                {{-- Если пользователь автор или админ, то добавляем кнопки редактировать и удалить --}}
+                                @if (Auth::user()->isAdmin() || Auth::user()->id == $recipe->user_id)
+                                    <a href="{{ route('recipe.edit', ['slug' => $recipe->slug]) }}" class="btn btn-outline-success">
+                                        <i width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"></i>
+                                        Редактировать рецепт
+                                    </a>
+                                    <a href="{{ route('recipe.del', ['slug' => $recipe->slug]) }}" class="btn btn-outline-danger">
+                                        <i width="16" height="16" fill="currentColor" class="bi bi-journal-x" viewBox="0 0 16 16"></i>
+                                        Удалить рецепт
+                                    </a>
+                                @endif
                             @endauth
+
                             <a href="{{ route('recipe.pdf', ['slug' => $recipe->slug]) }}" class="btn btn-outline-info">
                                 <i width="16" height="16" fill="currentColor" class="bi bi-filetype-pdf" viewBox="0 0 16 16"></i>
                                 Сохранить в PDF

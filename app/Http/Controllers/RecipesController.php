@@ -101,6 +101,7 @@ class RecipesController extends Controller
             'calorie' => $request->calorie,
             'slug' => $slug,
             'path' => $path,
+            'user_id' => Auth::id(),
         ]);
 
         return back()->with('msg_success', 'Ваш рецепт направлен на модерацию!');

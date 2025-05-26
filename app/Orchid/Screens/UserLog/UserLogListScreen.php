@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\UserLog;
 
-use App\Orchid\Layouts\Userlog\UserLogListLayout;
+use App\Orchid\Layouts\UserLog\UserLogListLayout;
 use Illuminate\Http\Request;
 use App\Models\UserLog;
 use Orchid\Screen\Actions\Button;

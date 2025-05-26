@@ -5,7 +5,23 @@
     <li class="breadcrumb-item active " aria-current="page">{{ $bread }}</li>
 @endsection
 @section('main_content')
-    <h1 class="text-center"> {{ $title }}</h1>
+    <h1 class="text-center"> {{ $title }}
+        @if (Route::current()->getName() == 'search')
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    Сортировать рецепты по
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ route('search', ['query' => $query, 'sort' => 'title']) }}">алфавиту</a></li>
+                    <li><a class="dropdown-item"
+                            href="{{ route('search', ['query' => $query, 'sort' => 'category_id', 'flag' => 'asc']) }}">категориям</a></li>
+                    <li><a class="dropdown-item"
+                            href="{{ route('search', ['query' => $query, 'sort' => 'comments_avg_rating', 'flag' => 'desc']) }}">рейтингу</a>
+                    </li>
+                </ul>
+            </div>
+        @endif
+    </h1>
     <div class="container-md">
         @if (count($recipes))
             @foreach ($recipes as $rec)

@@ -6,8 +6,10 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Recipe;
 use App\Models\User;
+use Hamcrest\Core\IsNull;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use function PHPUnit\Framework\isNull;
 
 class CategoriesController extends Controller
 {
@@ -45,13 +47,17 @@ class CategoriesController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('query');
+        $sort = $request->input('sort');
+        $flag = $request->input('flag');
         $data['title'] = 'Поиск по рецептам <<'.$query.'>>';
+        $data['query'] = $query;
         $data['bread'] = 'Поиск';
         $data['recipes'] = Recipe::whereNotNull('edit_id')
             ->whereAny(['title', 'description', 'ingredients', 'timing', 'calorie'], 'LIKE', '%'.$query.'%')
             ->withAvg('comments', 'rating')
+            ->orderBy(is_null($sort) ? 'title' : $sort, is_null($flag) ? 'asc' : $flag)
             ->paginate(5);
-        //dump($data);
+        //   dump($request);
         return view('category', $data);
     }
 
