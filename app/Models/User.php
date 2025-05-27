@@ -83,20 +83,15 @@ class User extends Authenticatable
     // Проверка пользователя на статус администратора
     public function isAdmin()
     {
-
-        // $user = Auth::user();
-
-        // if ($user === null) {
-        //     return false;
-        // }
-
-        // dump($user);
-        // if ($user->hasAccess('user.admin')) {
-            // Execute this code if the user has permission
-
-            return $this->is_admin === 1;
-       // }
-
+        $user = Auth::user();
+        if ($user === null) {
+            return false;
+        } elseif ($user->hasAccess('platform.systems.*')) {
+            // Выполните этот код, если у пользователя есть разрешение
+            return true;
+        }
+        return false;
+        // return $this->is_admin === 1;
     }
 
 }
