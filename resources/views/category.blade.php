@@ -24,25 +24,26 @@
             </div>
         @endif
     </h1>
+
     <div class="container-md">
         @if (count($recipes))
             @foreach ($recipes as $rec)
                 <h2 class="mx-auto"> {{ $rec->title }}</h2>
                 <a class="text-decoration-none" href="{{ route('recipe', $rec->slug) }}">
-                    <div class="row justify-content-start">
+                    {{-- <div class="row justify-content-start"> --}}
                         <div class="clearfix">
-                            <img src="{{ asset($rec->path) }}" alt="{{ $rec->title }}" class="float-start mb-3 me-md-3"
-                                style="height: 250px; width: 250px;" onError="this.src='/img/img_not_found.gif'; this.onerror=null">
-                            Описание рецепта
+                            <img src="{{ asset($rec->path) }}" alt="{{ $rec->title }}" class="rounded col-12 col-sm-4 float-start mb-3 me-3 "
+                                style="" onError="this.src='/img/img_not_found.gif'; this.onerror=null">
+                            Описание рецепта:
                             <div>
                                 {{ mb_substr($rec->description, 0, 250) }}
                                 ...
                                 <br>
                             </div>
-                            Время приготовления
+                            Время приготовления:
                             {{ $rec->timing }}
                             <br>
-                            Калорийность
+                            Калорийность:
                             {{ $rec->calorie }}
                             калорий
                             <div class="rating">
@@ -52,7 +53,7 @@
                                 {{ number_format($rec->comments_avg_rating, 1) }}
                             </div>
                         </div>
-                    </div>
+                    {{-- </div> --}}
                 </a>
             @endforeach
             <p> {{ $recipes->appends(Request::except('page'))->links('components.pagination') }}</p>

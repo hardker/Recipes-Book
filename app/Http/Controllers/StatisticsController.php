@@ -22,7 +22,7 @@ class StatisticsController extends Controller
         $totalViews = UserLog::count();
         $totalRating = Comment::avg('rating');
         $totalFav = Like::count();
-        $logs = UserLog::latest()->get();
+        // $logs = UserLog::latest()->get();
 
 
         // Данные для графиков
@@ -50,7 +50,7 @@ class StatisticsController extends Controller
             'totalComments',
             'totalUsers',
             'totalViews',
-            'logs',
+            // 'logs',
             'totalRating',
             'totalFav',
             'recipesByMonth',
@@ -61,12 +61,12 @@ class StatisticsController extends Controller
 
     }
 
-    public function deletelog($id)
-    {
-        UserLog::destroy($id);
-        return redirect()->back()->with('msg_success', 'Строка успешно удалена!');
-        ;
-    }
+    // public function deletelog($id)
+    // {
+    //     UserLog::destroy($id);
+    //     return redirect()->back()->with('msg_success', 'Строка успешно удалена!');
+    //     ;
+    // }
 
     // public function deletelogs()
     // {

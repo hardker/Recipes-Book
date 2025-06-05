@@ -160,7 +160,7 @@ return [
      */
 
     'template' => [
-        'header' => '',
+        'header' => 'shablons.header',
         'footer' => '',
     ],
 

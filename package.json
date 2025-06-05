@@ -9,7 +9,7 @@
         "@popperjs/core": "^2.11.6",
         "@vitejs/plugin-react": "^4.4.1",
         "axios": "^1.1.2",
-        "bootstrap": "^5.2.3",
+        "bootstrap": "^5.3.3",
         "laravel-vite-plugin": "^1.2.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",

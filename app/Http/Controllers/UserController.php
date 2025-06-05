@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\User;
+use App\Models\Recipe;
+use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +16,7 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
+
     public function create()
     {
         return view('user.create');
@@ -50,9 +54,9 @@ class UserController extends Controller
 
             return redirect()->intended('fav')->with('msg_success', Auth::user()->name.' Вы успешно авторизованы!');
         }
+        // dd($request);
+        return back()->with('msg_error', 'Неправильный логин или пароль');
 
-        return back()->withError(['email' => 'Неправильный логин или пароль']);
-        //   dump($request->boolean('remember'));
         //   dd($request->all());
         //  return view('user.login');
     }
@@ -65,10 +69,54 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    public function dashboard()
+    public function profile()
     {
-        return view('user.dashboard');
+        // $data['stat'] = Like::where('user_id', operator: Auth::id())->where('recipe_id', $data['recipe']->id)->first();
+        $recipes = Recipe::where('user_id', Auth::id())->withAvg('comments', 'rating')
+            // ->withAvg('likes', 'status')
+            ->defaultSort('comments_avg_rating', 'desc')->paginate(5);
+        $comments = Comment::with('recipe')->where('email', Auth::user()->email)
+            ->defaultSort('created_at', 'desc')->paginate(5);
+        //dump($recipes);
+        return view('user.profile', compact('recipes', 'comments'));
     }
+    public function save(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'confirm_password' => 'required_with:password|same:password',
+            // 'avatar' => 'image',
+        ]);
+
+        $input = $request->all();
+
+        // if ($request->hasFile('avatar')) {
+        //     $avatarName = time().'.'.$request->avatar->getClientOriginalExtension();
+        //     $request->avatar->move(public_path('avatars'), $avatarName);
+
+        //     $input['avatar'] = $avatarName;
+
+        // } else {
+        //     unset($input['avatar']);
+        // }
+
+        if ($request->filled('password')) {
+            $input['password'] = Hash::make($input['password']);
+        } else {
+            unset($input['password']);
+        }
+
+        auth()->user()->update($input);
+
+        return back()->with('msg_success', 'Профиль успешно обновлен.');
+    }
+    public function delсomment($id)
+    {
+        Comment::destroy($id);
+        return back()->with('msg_success', 'Комментарий успешно удален!');
+    }
+
 
     public function yandex() // перенаправляем юзера на яндекс Auth
     {

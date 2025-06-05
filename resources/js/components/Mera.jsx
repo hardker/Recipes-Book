@@ -45,7 +45,7 @@ function Mera() {
                     <input type="text" class="form-control" placeholder="Введите название продукта"
                         onChange={(e) => { handlesearch(e); }}
                     />
-                    <table class="table table-bordered table-striped text-center">
+                    <table class="table  table-responsive table-sm table-bordered table-striped text-center">
                         <thead>
                             <tr>
                                 <th>Название</th>

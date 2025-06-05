@@ -13,7 +13,8 @@
     {{-- <link href="{{ asset('css/bootstrap-icons.min.css') }}" rel="stylesheet"> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"> --}}
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <style>
         body {
@@ -41,9 +42,6 @@
 
 <body>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
 
     @include('components.header')
 
@@ -72,29 +70,31 @@
             </div>
         @endif --}}
 
-   @yield('main_content')
+        @yield('main_content')
 
         <!-- Всплывающее сообщение-->
         @if (Session::has('msg_success'))
-            <div class="fade show toast-container position-fixed bottom-0 end-0 p-2 text-bg-primary border-0"
-                role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="1000" data-bs-autohide="true">
+            <div id="liveToast" class="toast fade hide toast-container position-fixed bottom-0 end-0 p-2 text-bg-primary border-0" role="status"
+                aria-live="polite" aria-atomic="true" data-bs-delay="10000">
                 <div class="d-flex">
                     <div class="toast-body">
                         <strong>ПОЗДРАВЛЯЮ!</strong><br>
                         {!! session('msg_success') !!}
                     </div>
-                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
-                        aria-label="Закрыть"></button>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
                 </div>
             </div>
+            <script>
+                const toastBtstr = bootstrap.Toast.getOrCreateInstance(document.getElementById('liveToast'))
+                toastBtstr.show()
+            </script>
         @endif
-
-     
-
     </main>
 
     @include('components.footer')
 
+
 </body>
+
 
 </html>

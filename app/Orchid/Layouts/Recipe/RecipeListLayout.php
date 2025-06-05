@@ -58,7 +58,7 @@ class RecipeListLayout extends Table
                 ->render(fn ($model) => is_null($model->deleted_at) ? null : Carbon::parse($model->deleted_at)
                     ->format('d.m.Y H:i:s')),
 
-            TD::make(__('Actions'))->align(TD::ALIGN_CENTER)->width('10px')
+            TD::make(__('Actions'))->align(TD::ALIGN_CENTER)->width('10px')->cantHide()
                 ->render(function (Recipe $recipe) {
                     if ($recipe->trashed()) {
                         return DropDown::make()->icon('bs.three-dots-vertical')->list([

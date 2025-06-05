@@ -18,11 +18,11 @@ class RecipesController extends Controller
 {
     public function index($slug)
     {
-        $data['recipe'] = Recipe::whereNotNull('edit_id')->with('comments')->where('slug', $slug)->first();
+        $data['recipe'] = Recipe::whereNotNull( 'edit_id')->with('comments')->where('slug', $slug)->first();
         $data['category'] = $data['recipe']->category;
         $data['avtor_count'] = Recipe::whereNotNull('edit_id')->where('user_id', $data['recipe']->user_id)->count();
         $data['avtor'] = $data['recipe']->user;
-        $data['stat'] = Like::where('user_id', Auth::id())->where('recipe_id', $data['recipe']->id)->first();
+        $data['stat'] = Like::where('user_id',  Auth::id())->where('recipe_id', $data['recipe']->id)->first();
 
         //dump($data);
         return view('/recipe', $data);

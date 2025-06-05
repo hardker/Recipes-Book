@@ -35,7 +35,7 @@ Route::middleware([UserLogMW::class])->group(function () {
 Route::get('/recipe/{id}/fav/{status}', [RecipesController::class, 'in_favorite'])->name('InFavorite');
 Route::post('/comment', [RecipesController::class, 'add_comment'])->name('comment.add');
 Route::get('/about', [StatisticsController::class, 'statistic'])->name('about');
-//Route::post('/about/dellog/{id}', [StatisticsController::class, 'deletelog'])->name('dellog');
+
 //Route::post('/about/dellogs}', [StatisticsController::class, 'deletelogs'])->name('dellogs');
 
 Route::middleware('guest')->group(function () {
@@ -50,7 +50,9 @@ Route::middleware('guest')->group(function () {
 
 });
 Route::middleware('auth')->group(function () {
-    // Route::get('dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::post('/profile', [UserController::class, 'save'])->name('user.profile.save');
+    Route::post('/profile/delсomment/{id}', [UserController::class, 'delсomment'])->name('delсomment');
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
     Route::get('/new', [RecipesController::class, 'new_recipe'])->name('recipe.new');
     Route::post('/new', [RecipesController::class, 'add_recipe'])->name('recipe.add');

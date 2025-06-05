@@ -67,7 +67,7 @@
     <div class="container">
         <div class="container text-left">
             <div class="clearfix fw-bold">
-                <img src="{{ asset($recipe->path) }}" alt="{{ $recipe->slug }}" class="float-start mb-3 me-md-3" style="height: 300px; width: 300px;"
+                <img src="{{ asset($recipe->path) }}" alt="{{ $recipe->slug }}" class="rounded col-12 col-sm-4 float-start mb-3 me-3" style=""
                     id='image' onError="this.src='../img/img_not_found.gif'; this.onerror=null">
                 <br>
                 <h4>Описание рецепта</h4>
@@ -216,9 +216,10 @@
                             </div>
                         </div>
                         <div class="col mt-3 ">
-                            <button type="submit" class="btn btn-outline-primary me-2">Отправить
-                                <i width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16"> </i>
+                            <button type="submit" class="btn btn-outline-primary me-2" id="ToastBtn">Отправить
+                                <i width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16" > </i>
                             </button>
+                            
                         </div>
                     </form>
                 </div>

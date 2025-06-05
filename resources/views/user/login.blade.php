@@ -21,15 +21,27 @@
         <form action="{{ route('login.auth') }}" method="post">
             <h1 class="h3 mb-3 fw-normal text-center">АВТОРИЗАЦИЯ</h1>
             @csrf
-            <div class="form-floating my-3">
-                <input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
+
+            <div class="form-floating ">
+                <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com"
+                    value="{{ old('email') }}" required autofocus>
+                @error('email')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
                 <label for="email">Адрес электронной почты</label>
             </div>
-            <div class="form-floating">
-                <input name="password" type="password" class="form-control" id="password" placeholder="Password">
+
+            @if (Session::has('msg_error'))
+                <div class="text-danger text-center">
+                    {!! session('msg_error') !!}
+                </div>
+            @endif
+
+            <div class="form-floating mt-2">
+                <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
                 <label for="password">Пароль</label>
             </div>
-            <div class="form-check text-start my-3">
+            <div class="form-check text-start mb-3">
                 <input name="remember" class="form-check-input" type="checkbox" id="remember">
                 <label class="form-check-label" for="remember">
                     Запомнить меня
@@ -98,4 +110,21 @@
             {!! Socialite::driver('telegram')->getButton() !!}
         </div>
     </div>
+    <!-- Всплывающее сообщение-->
+    @if (Session::has('msg_error'))
+        <div id="errorToast" class="toast fade hide toast-container position-fixed start-0 top-0 p-2 text-bg-danger border-0 m-5" role="alert"
+            aria-live="assertive" aria-atomic="true" data-bs-delay="10000">
+            <div class="d-flex ">
+                <div class="toast-body">
+                    <strong>&#128274; ОШИБКА &#128274;</strong><br>
+                    {!! session('msg_error') !!}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+            </div>
+        </div>
+        <script>
+            const toastBtstr = bootstrap.Toast.getOrCreateInstance(document.getElementById('errorToast'))
+            toastBtstr.show()
+        </script>
+    @endif
 @endsection

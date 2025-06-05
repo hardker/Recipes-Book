@@ -74,6 +74,12 @@ class Recipe extends Model
         return $this->hasMany(Comment::class);
     }
 
+    //    public function likes(): HasMany
+    // {
+    //     return $this->hasMany( App.Models.Like::class);
+    // }
+
+
     // public function averageRating()
     // {
     //     return $this->comments()->avg('rating');

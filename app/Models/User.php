@@ -74,7 +74,6 @@ class User extends Authenticatable
         return $this->hasMany(Like::class);
     }
 
-
     public function recipes(): HasMany
     {
         return $this->hasMany(Recipe::class);
@@ -93,5 +92,4 @@ class User extends Authenticatable
         return false;
         // return $this->is_admin === 1;
     }
-
 }

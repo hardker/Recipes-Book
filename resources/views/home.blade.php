@@ -17,8 +17,8 @@
                         <div class='clearfix'>
                             <div class="col-12 col-xl-8 align-self-center fw-bold">
                                 <i class="h2"><b>{{ $cat->name_cat }}</b></i><br><br>
-                                <img src="{{ asset($cat->path) }}" alt="{{ $cat->name_cat }}" class="float-start mb-3 me-md-3"
-                                    style="height: 250px; width: 250px;" onError="this.src='/img/img_not_found.gif'; this.onerror=null">
+                                <img src="{{ asset($cat->path) }}" alt="{{ $cat->name_cat }}" class="rounded col-12 col-sm-4 float-start mb-3 me-3"
+                                    style="" onError="this.src='/img/img_not_found.gif'; this.onerror=null">
                                 <i> {{ $cat->description }} </i>
                             </div>
                         </div>
