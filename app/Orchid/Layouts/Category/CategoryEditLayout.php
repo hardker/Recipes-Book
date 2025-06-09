@@ -47,9 +47,10 @@ class CategoryEditLayout extends Rows
                 ->help('Описание категории'),
 
             Picture::make('category.path')
-                ->path('/')
                 ->acceptedFiles('image/*')
-                ->targetRelativeUrl(),
+                ->path('/')
+            // ->targetRelativeUrl()
+            ,
         ];
     }
 }

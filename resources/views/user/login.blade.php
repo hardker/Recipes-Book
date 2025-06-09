@@ -12,6 +12,8 @@
             padding: 1rem;
         }
 
+        #Caps_lock {display:none}
+
         /* .form-signin .form-floating:focus-within {z-index: 2;}*/
     </style>
 @endsection
@@ -30,13 +32,12 @@
                 @enderror
                 <label for="email">Адрес электронной почты</label>
             </div>
-
-            @if (Session::has('msg_error'))
-                <div class="text-danger text-center">
+            <div class="text-danger text-center">
+                @if (Session::has('msg_error'))
                     {!! session('msg_error') !!}
-                </div>
-            @endif
-
+                @endif
+                <p id="Caps_lock" class="my-0">Внимание! Caps lock включен.</p>
+            </div>
             <div class="form-floating mt-2">
                 <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
                 <label for="password">Пароль</label>
@@ -110,8 +111,9 @@
             {!! Socialite::driver('telegram')->getButton() !!}
         </div>
     </div>
-    <!-- Всплывающее сообщение-->
+
     @if (Session::has('msg_error'))
+        <!-- Всплывающее сообщение-->
         <div id="errorToast" class="toast fade hide toast-container position-fixed start-0 top-0 p-2 text-bg-danger border-0 m-5" role="alert"
             aria-live="assertive" aria-atomic="true" data-bs-delay="10000">
             <div class="d-flex ">
@@ -127,4 +129,19 @@
             toastBtstr.show()
         </script>
     @endif
+    <script>
+        // Получить поле ввода
+        var input = document.getElementById("password");
+        // Получить текст предупреждения
+        var text = document.getElementById("Caps_lock");
+        // Когда пользователь нажимает любую клавишу, запустить функцию
+        input.addEventListener("keyup", function(event) {
+            // Если Caps Lock нажат, отобразится текст предупреждения
+            if (event.getModifierState("CapsLock")) {
+                text.style.display = "block";
+            } else {
+                text.style.display = "none"
+            }
+        });
+    </script>
 @endsection

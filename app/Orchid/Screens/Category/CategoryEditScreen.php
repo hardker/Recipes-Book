@@ -109,15 +109,11 @@ class CategoryEditScreen extends Screen
             ],
         ]);
 
-
         $category->fill($request->get('category'));
-        //  dd($request->hasFile('path'));
-        is_null($request->path) ? null : $category->path = $request->path;
-
+        // dump($request);
+        $category->path = 'storage/'.pathinfo($category->path, PATHINFO_BASENAME);
         $category->save();
-        //    dd($category);
         Toast::info('Категория сохранена');
-
         return redirect()->route('platform.categories');
     }
 
